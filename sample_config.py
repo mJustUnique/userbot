@@ -19,7 +19,7 @@ class Config(object):
     API_HASH = os.environ.get("API_HASH") or None
     # Datbase url heroku sets it automatically else get this from elephantsql
     DB_URI = os.environ.get("DATABASE_URL", None)
-    # Get this value by running python3 stringsetup.py or https://repl.it/@sandeep1709/generatestringsession
+    # Get this value by running python3 stringsetup.py 
     STRING_SESSION = os.environ.get("STRING_SESSION", None)
     # Telegram BOT Token and bot username from @BotFather
     TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN") or os.environ.get(
@@ -28,9 +28,9 @@ class Config(object):
     TG_BOT_USERNAME = None
     # get this value from http://www.timezoneconverter.com/cgi-bin/findzone.tzc
     TZ = os.environ.get("TZ", "Asia/Kolkata")
-    # set this with required cat repo link
+    # set this with required repo link
     UPSTREAM_REPO = os.environ.get(
-        "UPSTREAM_REPO", "https://github.com/TgCatUB/catuserbot"
+        "UPSTREAM_REPO", "https://github.com/mJustUnique/userbot"
     )
     # External plugins repo
     EXTERNAL_REPO = os.environ.get("EXTERNAL_REPO", None)
@@ -66,10 +66,10 @@ class Config(object):
     # set this will channel id of your custom plugins
     PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL") or 0)
     # set this value with your required name for telegraph plugin
-    TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "catuserbot")
+    TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "UserBot")
     # for custom thumb image set this with your required thumb telegraoh link
     THUMB_IMAGE = os.environ.get(
-        "THUMB_IMAGE", "https://telegra.ph/file/ca95524e4734b0d5461b5.jpg"
+        "THUMB_IMAGE", "https://telegra.ph/file/1101f11b4ded1fff30f63.jpg"
     )
     # specify NO_LOAD with plugin names for not loading in userbot
     NO_LOAD = list(os.environ.get("NO_LOAD", "").split())
@@ -159,7 +159,7 @@ class Config(object):
     UPSTREAM_REPO_BRANCH = os.environ.get("UPSTREAM_REPO_BRANCH", "master")
     # dont touch this at all
     SUDO_USERS: Set[int] = set()
-    CATUBLOGO = None
+    UBLOGO = None
     BOTLOG = False
     BOTLOG_CHATID = 0
     # extra plugins realted vars below  4
