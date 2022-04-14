@@ -31,7 +31,7 @@ cmhd = Config.COMMAND_HAND_LER
 @catub.bot_cmd(pattern="^/help$", from_users=Config.OWNER_ID)
 async def bot_help(event):
     await event.reply(
-        f"""The commands in the bot are:
+        f"""The commands in the bot are :
 **Note : **__This commands work only in this bot__ {botusername}
 
 • **Cmd : **/uinfo <reply to user message>
@@ -91,13 +91,13 @@ async def bot_broadcast(event):
             if count % 5 == 0:
                 try:
                     prog_ = (
-                        "🔊 Broadcasting ...\n\n"
+                        "🔊 Broadcasting...\n\n"
                         + progress_str(
                             total=bot_users_count,
                             current=count + len(blocked_users),
                         )
-                        + f"\n\n• ✔️ **Success** :  `{count}`\n"
-                        + f"• ✖️ **Failed** :  `{len(blocked_users)}`"
+                        + f"\n\n✔️ **Success** :  `{count}`\n"
+                        + f"✖️ **Failed** :  `{len(blocked_users)}`"
                     )
                     await br_cast.edit(prog_)
                 except FloodWaitError as e:
@@ -128,7 +128,7 @@ async def ban_starters(event):
         return await edit_delete(event, "`No one started your bot yet.`")
     msg = "**The list of users who started your bot are :\n\n**"
     for user in ulist:
-        msg += f"• 👤 {_format.mentionuser(user.first_name , user.user_id)}\n**ID:** `{user.user_id}`\n**UserName:** @{user.username}\n**Date: **__{user.date}__\n\n"
+        msg += f"• 👤 {_format.mentionuser(user.first_name , user.user_id)}\n**ID :** `{user.user_id}`\n**UserName :** @{user.username}\n**Date : **__{user.date}__\n\n"
     await edit_or_reply(event, msg)
 
 
@@ -148,16 +148,16 @@ async def ban_botpms(event):
         user = await event.client.get_entity(user_id)
         user_id = user.id
     except Exception as e:
-        return await event.reply(f"**Error:**\n`{e}`")
+        return await event.reply(f"**Error :**\n`{e}`")
     if user_id == Config.OWNER_ID:
-        return await event.reply("I can't ban you master")
+        return await event.reply("I can't ban you Boss !!")
     if check := check_is_black_list(user.id):
         return await event.client.send_message(
             event.chat_id,
             f"#Already_banned\
             \nUser already exists in my Banned Users list.\
-            \n**Reason For Bot BAN:** `{check.reason}`\
-            \n**Date:** `{check.date}`.",
+            \n**Reason For Bot BAN :** `{check.reason}`\
+            \n**Date :** `{check.date}`.",
         )
     msg = await ban_user_from_bot(user, reason, reply_to)
     await event.reply(msg)
@@ -175,7 +175,7 @@ async def ban_botpms(event):
         user = await event.client.get_entity(user_id)
         user_id = user.id
     except Exception as e:
-        return await event.reply(f"**Error:**\n`{e}`")
+        return await event.reply(f"**Error :**\n`{e}`")
     check = check_is_black_list(user.id)
     if not check:
         return await event.client.send_message(
@@ -203,7 +203,7 @@ async def ban_starters(event):
         return await edit_delete(event, "`No one is banned in your bot yet.`")
     msg = "**The list of users who are banned in your bot are :\n\n**"
     for user in ulist:
-        msg += f"• 👤 {_format.mentionuser(user.first_name , user.chat_id)}\n**ID:** `{user.chat_id}`\n**UserName:** @{user.username}\n**Date: **__{user.date}__\n**Reason:** __{user.reason}__\n\n"
+        msg += f"• 👤 {_format.mentionuser(user.first_name , user.chat_id)}\n**ID :** `{user.chat_id}`\n**UserName :** @{user.username}\n**Date : **__{user.date}__\n**Reason :** __{user.reason}__\n\n"
     await edit_or_reply(event, msg)
 
 
