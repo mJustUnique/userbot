@@ -69,7 +69,7 @@ async def startupmessage():
         if BOTLOG:
             Config.UBLOGO = await catub.tgbot.send_file(
                 BOTLOG_CHATID,
-                "https://telegra.ph/file/be1604a96cbb83bd170a7.jpg",
+                "https://telegra.ph/file/5ac4d0b17a96bf076d017.jpg",
                 caption="**Your UserBot Has Been Started Successfully.**",
                 buttons=None
             )
