@@ -23,7 +23,7 @@ from .pluginmanager import load_module
 from .tools import create_supergroup
 
 ENV = bool(os.environ.get("ENV", False))
-LOGS = logging.getLogger("CatUBStartUP")
+LOGS = logging.getLogger("UserBotStartUP")
 cmdhr = Config.COMMAND_HAND_LER
 
 if ENV:
@@ -67,11 +67,11 @@ async def startupmessage():
     """
     try:
         if BOTLOG:
-            Config.CATUBLOGO = await catub.tgbot.send_file(
+            Config.UBLOGO = await catub.tgbot.send_file(
                 BOTLOG_CHATID,
-                "https://telegra.ph/file/4e3ba8e8f7e535d5a2abe.jpg",
-                caption="**Your CatUserbot has been started successfully.**",
-                buttons=[(Button.url("Support", "https://t.me/catuserbot"),)],
+                "https://telegra.ph/file/be1604a96cbb83bd170a7.jpg",
+                caption="**Your UserBot Has Been Started Successfully.**",
+                buttons=None
             )
     except Exception as e:
         LOGS.error(e)
@@ -87,7 +87,7 @@ async def startupmessage():
         if msg_details:
             await catub.check_testcases()
             message = await catub.get_messages(msg_details[0], ids=msg_details[1])
-            text = message.text + "\n\n**Ok Bot is Back and Alive.**"
+            text = message.text + "\n\n**Ok Bot Is Back And Alive.**"
             await catub.edit_message(msg_details[0], msg_details[1], text)
             if gvarstatus("restartupdate") is not None:
                 await catub.send_message(
@@ -183,7 +183,7 @@ async def load_plugins(folder, extfolder=None):
             failure.append("None")
         await catub.tgbot.send_message(
             BOTLOG_CHATID,
-            f'Your external repo plugins have imported \n**No of imported plugins :** `{success}`\n**Failed plugins to import :** `{", ".join(failure)}`',
+            f'Your External Repo Plugins Have imported \n**No Of imported Plugins :** `{success}`\n**Failed To import :** `{", ".join(failure)}`',
         )
 
 
@@ -218,9 +218,9 @@ async def verifyLoggerGroup():
                 + str(e)
             )
     else:
-        descript = "Don't delete this group or change to group(If you change group all your previous snips, welcome will be lost.)"
+        descript = "UserBot Log Group 🌚"
         _, groupid = await create_supergroup(
-            "CatUserbot BotLog Group", catub, Config.TG_BOT_USERNAME, descript
+            "UserBot Log Group", catub, Config.TG_BOT_USERNAME, descript
         )
         addgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
         print(
