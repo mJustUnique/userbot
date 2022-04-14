@@ -135,16 +135,16 @@ def errors_handler(func):
             if Config.PRIVATE_GROUP_BOT_API_ID != 0:
                 return
             date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
-            ftext = f"\nDisclaimer:\nThis file is pasted only here ONLY here,\
+            ftext = f"\nDisclaimer :\nThis file is pasted only here ONLY here,\
                                   \nwe logged only fact of error and date,\nwe respect your privacy,\
                                   \nyou may not report this error if you've\
                                   \nany confidential data here, no one will see your data\
                                   \n\n--------BEGIN USERBOT TRACEBACK LOG--------\
-                                  \nDate: {date}\nGroup ID: {str(check.chat_id)}\
-                                  \nSender ID: {str(check.sender_id)}\
-                                  \n\nEvent Trigger:\n{str(check.text)}\
-                                  \n\nTraceback info:\n{str(traceback.format_exc())}\
-                                  \n\nError text:\n{str(sys.exc_info()[1])}"
+                                  \nDate : {date}\nGroup ID: {str(check.chat_id)}\
+                                  \nSender ID : {str(check.sender_id)}\
+                                  \n\nEvent Trigger :\n{str(check.text)}\
+                                  \n\nTraceback info :\n{str(traceback.format_exc())}\
+                                  \n\nError text :\n{str(sys.exc_info()[1])}"
             new = {
                 "error": str(sys.exc_info()[1]),
                 "date": datetime.datetime.now(),
@@ -152,13 +152,13 @@ def errors_handler(func):
 
             ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
             command = 'git log --pretty=format:"%an: %s" -5'
-            ftext += "\n\n\nLast 5 commits:\n"
+            ftext += "\n\n\nLast 5 commits :\n"
             output = (await runcmd(command))[:2]
             result = output[0] + output[1]
             ftext += result
             pastelink = await paste_message(ftext)
-            text = "**CatUserbot Error report**\n\n"
-            link = "[here](https://t.me/catuserbot_support)"
+            text = "**UserBot Error Report**\n\n"
+            link = "[Here](https://t.me/catuserbot_support)"
             text += "If you wanna you can report it"
             text += f"- just forward this message {link}.\n"
             text += "Nothing is logged except the fact of error and date\n\n"
