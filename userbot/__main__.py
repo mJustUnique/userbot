@@ -15,15 +15,12 @@ from .utils import (
     verifyLoggerGroup,
 )
 
-LOGS = logging.getLogger("CatUserbot")
-
-print(userbot.__copyright__)
-print(f"Licensed under the terms of the {userbot.__license__}")
+LOGS = logging.getLogger("UserBot")
 
 cmdhr = Config.COMMAND_HAND_LER
 
 try:
-    LOGS.info("Starting Userbot")
+    LOGS.info("Starting UserBot")
     catub.loop.run_until_complete(setup_bot())
     LOGS.info("TG Bot Startup Completed")
 except Exception as e:
@@ -35,13 +32,9 @@ async def startup_process():
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
-    print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
-    print("Yay your userbot is officially working.!!!")
-    print(
-        f"Congratulation, now type {cmdhr}alive to see message if catub is live\
-        \nIf you need assistance, head to https://t.me/catuserbot_support"
-    )
-    print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
+    
+    print("\nBoss !! I'm Alive Now.\n")
+    
     await verifyLoggerGroup()
     await add_bot_to_logger_group(BOTLOG_CHATID)
     if PM_LOGGER_GROUP_ID != -100:
