@@ -7,7 +7,7 @@ from pathlib import Path
 
 from telethon import Button, functions, types, utils
 
-from userbot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
+from userbot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID, OWNER_ID
 
 from ..Config import Config
 from ..core.logger import logging
@@ -87,7 +87,7 @@ async def startupmessage():
         if msg_details:
             await catub.check_testcases()
             message = await catub.get_messages(msg_details[0], ids=msg_details[1])
-            text = message.text + "\n\n**Ok Bot Is Back And Alive.**"
+            text = message.text + f"\n\n**[Boss](tg://user?id={OWNER_ID} I'm Alive Now !!**"
             await catub.edit_message(msg_details[0], msg_details[1], text)
             if gvarstatus("restartupdate") is not None:
                 await catub.send_message(
