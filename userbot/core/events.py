@@ -164,7 +164,7 @@ async def send_message(
         str(Config.BOTLOG_CHATID),
         str(Config.PM_LOGGER_GROUP_ID),
     ]:
-        return await client.sendmessage(
+        return await client.send_message(
             entity=chatid,
             message=message,
             send_as=send_as,
@@ -191,7 +191,7 @@ async def send_message(
     safecheck = await safe_check_text(msg)
     if safecheck:
         if Config.BOTLOG:
-            response = await client.sendmessage(
+            response = await client.send_message(
                 entity=Config.BOTLOG_CHATID,
                 message=msg,
                 send_as=send_as,
@@ -215,8 +215,8 @@ async def send_message(
                 comment_to=comment_to,
             )
         msglink = await client.get_msg_link(response)
-        msg = f"__Sorry I can't send this message in public chats it may have some sensitive data So check in __[Bot log group]({msglink})."
-        return await client.sendmessage(
+        msg = f"__Sorry I can't send this message in public chats it may have some sensitive data So check in __[Bot Log Group]({msglink})."
+        return await client.send_message(
             entity=chatid,
             message=msg,
             send_as=send_as,
@@ -239,7 +239,7 @@ async def send_message(
             schedule=schedule,
             comment_to=comment_to,
         )
-    return await client.sendmessage(
+    return await client.send_message(
         entity=chatid,
         message=msg,
         send_as=send_as,
@@ -306,7 +306,7 @@ async def send_file(
         )
     chatid = entity
     if str(chatid) == str(Config.BOTLOG_CHATID):
-        return await client.sendfile(
+        return await client.send_file(
             entity=Config.BOTLOG_CHATID,
             file=file,
             caption=caption,
@@ -342,7 +342,7 @@ async def send_file(
     safe_file_check = await safe_check_text(filemsg)
     if safecheck or safe_file_check:
         if Config.BOTLOG:
-            response = await client.sendfile(
+            response = await client.send_file(
                 entity=Config.BOTLOG_CHATID,
                 file=file,
                 caption=msg,
@@ -368,8 +368,8 @@ async def send_file(
                 **kwargs,
             )
         msglink = await client.get_msg_link(response)
-        msg = f"__Sorry I can't send this message in public chats it may have some sensitive data So check in __[Bot log group]({msglink})."
-        return await client.sendmessage(
+        msg = f"__Sorry I can't send this message in public chats it may have some sensitive data So check in __[Bot Log Group]({msglink})."
+        return await client.send_message(
             entity=chatid,
             message=msg,
             reply_to=reply_to,
@@ -378,7 +378,7 @@ async def send_file(
             schedule=schedule,
             comment_to=comment_to,
         )
-    return await client.sendfile(
+    return await client.send_file(
         entity=chatid,
         file=file,
         caption=msg,
@@ -432,7 +432,7 @@ async def edit_message(
     else:
         chat_id = chatid
     if str(chat_id) == str(Config.BOTLOG_CHATID):
-        return await client.editmessage(
+        return await client.edit_message(
             entity=chatid,
             message=message,
             text=text,
@@ -452,7 +452,7 @@ async def edit_message(
     safecheck = await safe_check_text(main_msg)
     if safecheck:
         if Config.BOTLOG:
-            response = await client.sendmessage(
+            response = await client.send_message(
                 entity=Config.BOTLOG_CHATID,
                 message=main_msg,
                 parse_mode=parse_mode,
@@ -467,8 +467,8 @@ async def edit_message(
                 schedule=schedule,
             )
         msglink = await client.get_msg_link(response)
-        msg = f"__Sorry I can't send this message in public chats it may have some sensitive data So check in __[Bot log group]({msglink})."
-        return await client.editmessage(
+        msg = f"__Sorry I can't send this message in public chats it may have some sensitive data So check in __[Bot Log Group]({msglink})."
+        return await client.edit_message(
             entity=chatid,
             message=message,
             text=msg,
@@ -483,7 +483,7 @@ async def edit_message(
             supports_streaming=supports_streaming,
             schedule=schedule,
         )
-    return await client.editmessage(
+    return await client.edit_message(
         entity=chatid,
         message=message,
         text=main_msg,
