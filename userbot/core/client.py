@@ -120,16 +120,16 @@ class CatUserBotClient(TelegramClient):
                 except MessageNotModifiedError:
                     LOGS.error("Message was same as previous message")
                 except MessageIdInvalidError:
-                    LOGS.error("Message was deleted or cant be found")
+                    LOGS.error("Message was deleted or can't be found")
                 except BotInlineDisabledError:
-                    await edit_delete(check, "`Turn on Inline mode for our bot`", 10)
+                    await edit_delete(check, "`Turn on Inline mode for bot !!`", 10)
                 except ChatSendStickersForbiddenError:
                     await edit_delete(
                         check, "`I guess i can't send stickers in this chat`", 10
                     )
                 except BotResponseTimeoutError:
                     await edit_delete(
-                        check, "`The bot didnt answer to your query in time`", 10
+                        check, "`The bot didn't answer to your query in time`", 10
                     )
                 except ChatSendMediaForbiddenError:
                     await edit_delete(check, "`You can't send media in this chat`", 10)
@@ -145,7 +145,7 @@ class CatUserBotClient(TelegramClient):
                     )
                 except FloodWaitError as e:
                     LOGS.error(
-                        f"A flood wait of {e.seconds} occured. wait for {e.seconds} seconds and try"
+                        f"A flood wait of {e.seconds} occured. wait for {e.seconds} seconds then try again"
                     )
                     await check.delete()
                     await asyncio.sleep(e.seconds + 5)
@@ -155,23 +155,23 @@ class CatUserBotClient(TelegramClient):
                         if Config.PRIVATE_GROUP_BOT_API_ID == 0:
                             return
                         date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
-                        ftext = f"\nDisclaimer:\nThis file is pasted only here ONLY here,\
+                        ftext = f"\nDisclaimer :\nThis file is pasted only here ONLY here,\
                                   \nwe logged only fact of error and date,\nwe respect your privacy,\
                                   \nyou may not report this error if you've\
                                   \nany confidential data here, no one will see your data\
                                   \n\n--------BEGIN USERBOT TRACEBACK LOG--------\
-                                  \nDate: {date}\nGroup ID: {str(check.chat_id)}\
-                                  \nSender ID: {str(check.sender_id)}\
-                                  \nMessage Link: {await check.client.get_msg_link(check)}\
-                                  \n\nEvent Trigger:\n{str(check.text)}\
-                                  \n\nTraceback info:\n{str(traceback.format_exc())}\
-                                  \n\nError text:\n{str(sys.exc_info()[1])}"
+                                  \nDate : {date}\nGroup ID: {str(check.chat_id)}\
+                                  \nSender ID : {str(check.sender_id)}\
+                                  \nMessage Link : {await check.client.get_msg_link(check)}\
+                                  \n\nEvent Trigger :\n{str(check.text)}\
+                                  \n\nTraceback info :\n{str(traceback.format_exc())}\
+                                  \n\nError text :\n{str(sys.exc_info()[1])}"
                         new = {
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
                         ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
-                        ftext += "\n\n\nLast 5 commits:\n"
+                        ftext += "\n\n\nLast 5 commits :\n"
                         command = 'git log --pretty=format:"%an: %s" -5'
                         output = (await runcmd(command))[:2]
                         result = output[0] + output[1]
@@ -179,9 +179,9 @@ class CatUserBotClient(TelegramClient):
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        link = "[here](https://t.me/catuserbot_support)"
+                        link = "[Here](https://t.me/catuserbot_support)"
                         text = (
-                            "**CatUserbot Error report**\n\n"
+                            "**UserBot Error Report**\n\n"
                             + "If you wanna you can report it"
                         )
                         text += f"- just forward this message {link}.\n"
@@ -276,32 +276,32 @@ class CatUserBotClient(TelegramClient):
                         if Config.PRIVATE_GROUP_BOT_API_ID == 0:
                             return
                         date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
-                        ftext = f"\nDisclaimer:\nThis file is pasted only here ONLY here,\
+                        ftext = f"\nDisclaimer :\nThis file is pasted only here ONLY here,\
                                     \nwe logged only fact of error and date,\nwe respect your privacy,\
                                     \nyou may not report this error if you've\
                                     \nany confidential data here, no one will see your data\
                                     \n\n--------BEGIN USERBOT TRACEBACK LOG--------\
-                                    \nDate: {date}\nGroup ID: {str(check.chat_id)}\
-                                    \nSender ID: {str(check.sender_id)}\
-                                    \nMessage Link: {await check.client.get_msg_link(check)}\
-                                    \n\nEvent Trigger:\n{str(check.text)}\
-                                    \n\nTraceback info:\n{str(traceback.format_exc())}\
-                                    \n\nError text:\n{str(sys.exc_info()[1])}"
+                                    \nDate: {date}\nGroup ID : {str(check.chat_id)}\
+                                    \nSender ID : {str(check.sender_id)}\
+                                    \nMessage Link : {await check.client.get_msg_link(check)}\
+                                    \n\nEvent Trigger :\n{str(check.text)}\
+                                    \n\nTraceback info :\n{str(traceback.format_exc())}\
+                                    \n\nError text :\n{str(sys.exc_info()[1])}"
                         new = {
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
                         ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
                         command = 'git log --pretty=format:"%an: %s" -5'
-                        ftext += "\n\n\nLast 5 commits:\n"
+                        ftext += "\n\n\nLast 5 commits :\n"
                         output = (await runcmd(command))[:2]
                         result = output[0] + output[1]
                         ftext += result
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        text = "**CatUserbot Error report**\n\n"
-                        link = "[here](https://t.me/catuserbot_support)"
+                        text = "**UserBot Error Report**\n\n"
+                        link = "[Here](https://t.me/catuserbot_support)"
                         text += "If you wanna you can report it"
                         text += f"- just forward this message {link}.\n"
                         text += (
