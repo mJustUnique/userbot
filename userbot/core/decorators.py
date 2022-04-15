@@ -22,7 +22,7 @@ def check_owner(func):
         else:
             HELP_TEXT = (
                 gvarstatus("HELP_TEXT")
-                or "Only My Master can Access This !!\n\nDeploy your own Catuserbot."
+                or "𝗦𝘁𝗼𝗽...✋ 𝐎𝐧𝐥𝐲 𝐌𝐲 𝐁𝐨𝐬𝐬 𝐂𝐚𝐧 𝐀𝐜𝐜𝐞𝐬𝐬 𝐓𝐡𝐢𝐬 - 𝐍𝐨𝐭 𝐅𝐨𝐫 𝐘𝐨𝐮 𝐁𝐢𝐭𝐜𝐡...!"
             )
             await c_q.answer(
                 HELP_TEXT,
