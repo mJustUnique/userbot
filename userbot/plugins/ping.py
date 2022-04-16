@@ -14,16 +14,16 @@ from ..Config import Config
 from ..core.managers import edit_or_reply
 from ..helpers.functions import get_readable_time
 from ..sql_helper.globals import gvarstatus
-from . import StartTime, catub, mention
+from . import StartTime, catub, hmention
 
 plugin_category = "tools"
 
 
-temp_ = "Pong!"
-temp = "Pong!\n`{ping} ms`"
+temp_ = "__**☞ Pong**__"
+temp = f"<b><i>➤  Pong!</b></i>\n⚡ {ms} <b><i>ms\n🔥 Boss : {hmention}</b></i>"
 if Config.BADCAT:
     temp_ = "__**☞ Pong**__"
-    temp = "__**☞ Pong**__\n➥ `{ping}` **ms**\n➥ __**Bot of **__{mention}"
+    temp = f"<b><i>➤  Pong!</b></i>\n⚡ {ms} <b><i>ms\n🔥 Boss : {hmention}</b></i>"
 
 
 @catub.cat_cmd(
@@ -50,7 +50,7 @@ async def _(event):
         end = datetime.now()
         tms = (end - start).microseconds / 1000
         ms = round((tms - 0.6) / 3, 3)
-        await edit_or_reply(catevent, f"Average Ping!\n`{ms} ms`")
+        await edit_or_reply(catevent, f"**🌚 Average Ping!**\n⚡ {ms} ms")
     else:
         catevent = await edit_or_reply(event, temp_)
         end = datetime.now()
@@ -78,7 +78,7 @@ async def _(event):
             except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
                 return await edit_or_reply(
                     catevent,
-                    f"**Media Value Error!!**\n__Change the link by __`.setdv`\n\n**__Can't get media from this link :-**__ `{PIC}`",
+                    f"**Media Value Error !!**\n__Change the link by __`.setdv`\n\n**__Can't get media from this link :-**__ `{PIC}`",
                 )
         else:
             await edit_or_reply(
