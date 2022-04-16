@@ -19,7 +19,7 @@ from ..helpers.utils import _format
 
 plugin_category = "misc"
 
-NAME = "untitled"
+NAME = "Untitled"
 
 downloads = pathlib.Path(os.path.join(os.getcwd(), Config.TMP_DOWNLOAD_DIRECTORY))
 
@@ -38,13 +38,13 @@ async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
         "usage": [
             "{tr}download <reply>",
             "{tr}dl <reply>",
-            "{tr}download custom name<reply>",
+            "{tr}download custom name <reply>",
         ],
     },
 )
 async def _(event):  # sourcery no-metrics
     "To download the replied telegram file"
-    mone = await edit_or_reply(event, "`Downloading....`")
+    mone = await edit_or_reply(event, "__Downloading....__")
     input_str = event.pattern_match.group(3)
     name = NAME
     path = None
@@ -91,14 +91,14 @@ async def _(event):  # sourcery no-metrics
             await reply.download_media(
                 file=file_name.absolute(),
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, mone, c_time, "trying to download")
+                    progress(d, t, mone, c_time, "__Trying to download...__")
                 ),
             )
         elif not reply.document:
             file_name = await reply.download_media(
                 file=downloads,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, mone, c_time, "trying to download")
+                    progress(d, t, mone, c_time, "__Trying to download...__")
                 ),
             )
         else:
@@ -107,14 +107,14 @@ async def _(event):  # sourcery no-metrics
                 location=reply.document,
                 out=dl,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, mone, c_time, "trying to download")
+                    progress(d, t, mone, c_time, "__Trying to download...__")
                 ),
             )
             dl.close()
         end = datetime.now()
         ms = (end - start).seconds
         await mone.edit(
-            f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
+            f"**Downloaded in {ms} seconds.**\n**Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
         )
     elif input_str:
         start = datetime.now()
@@ -148,7 +148,7 @@ async def _(event):  # sourcery no-metrics
             )
 
             estimated_total_time = downloader.get_eta(human=True)
-            current_message = f"Downloading the file\
+            current_message = f"Downloading the file...\
                                 \n\n**URL : **`{url}`\
                                 \n**File Name :** `{file_name}`\
                                 \n{progress_str}\
@@ -164,7 +164,7 @@ async def _(event):  # sourcery no-metrics
         ms = (end - start).seconds
         if downloader.isSuccessful():
             await mone.edit(
-                f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded file location :- ** `{os.path.relpath(downloaded_file_name,os.getcwd())}`"
+                f"**Downloaded in {ms} seconds.**\n**Downloaded file location :- ** `{os.path.relpath(downloaded_file_name,os.getcwd())}`"
             )
         else:
             await mone.edit("Incorrect URL\n {}".format(input_str))
@@ -246,14 +246,14 @@ async def _(event):  # sourcery no-metrics
         await reply.download_media(
             file=file_name.absolute(),
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, mone, c_time, "trying to download")
+                progress(d, t, mone, c_time, "__Trying to download...__")
             ),
         )
     elif not reply.document:
         file_name = await reply.download_media(
             file=location,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, mone, c_time, "trying to download")
+                progress(d, t, mone, c_time, "__Trying to download...__")
             ),
         )
     else:
@@ -262,12 +262,12 @@ async def _(event):  # sourcery no-metrics
             location=reply.document,
             out=dl,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, mone, c_time, "trying to download")
+                progress(d, t, mone, c_time, "__Trying to download...__")
             ),
         )
         dl.close()
     end = datetime.now()
     ms = (end - start).seconds
     await mone.edit(
-        f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
+        f"**Downloaded in {ms} seconds.**\n**Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
     )
