@@ -50,9 +50,10 @@ async def amireallyalive(event):
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
-    EMOJI = gvarstatus("ALIVE_EMOJI") or "  ✥ "
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**✮ MY BOT IS RUNNING SUCCESSFULLY ✮**"
-    CAT_IMG = gvarstatus("ALIVE_PIC")
+    EMOJI = gvarstatus("ALIVE_EMOJI") or " ⚡ "
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or """𝐀 𝐏𝐫𝐨𝐦𝐢𝐬𝐞 𝐌𝐞𝐚𝐧𝐬 𝐄𝐯𝐞𝐫𝐲𝐭𝐡𝐢𝐧𝐠 𝐁𝐮𝐭,
+𝐎𝐧𝐜𝐞 𝐈𝐭'𝐬 𝐁𝐫𝐨𝐤𝐞𝐧, 𝐒𝐨𝐫𝐫𝐲 𝐌𝐞𝐚𝐧𝐬 𝐍𝐨𝐭𝐡𝐢𝐧𝐠."""
+    CAT_IMG = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/78e33992bcd940b4e75f3.jpg"
     caption = cat_caption.format(
         ALIVE_TEXT=ALIVE_TEXT,
         ANIME=ANIME,
@@ -76,7 +77,7 @@ async def amireallyalive(event):
         except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
             return await edit_or_reply(
                 catevent,
-                f"**Media Value Error!!**\n__Change the link by __`.setdv`\n\n**__Can't get media from this link :-**__ `{PIC}`",
+                f"**Media Value Error !!**\n__Change the link by __`.setdv`\n\n**__Can't get media from this link :-**__ `{PIC}`",
             )
     else:
         await edit_or_reply(
@@ -86,12 +87,15 @@ async def amireallyalive(event):
 
 
 temp = """{ALIVE_TEXT}
-**{EMOJI} Database :** `{dbhealth}`
-**{EMOJI} Telethon Version :** `{telever}`
-**{EMOJI} Catuserbot Version :** `{catver}`
-**{EMOJI} Python Version :** `{pyver}`
+
+**{EMOJI} Ping :** `{ping}`
+**{EMOJI} Boss :** {mention}
 **{EMOJI} Uptime :** `{uptime}`
-**{EMOJI} Master:** {mention}"""
+**{EMOJI} Database :** `{dbhealth}...`
+**{EMOJI} Bot Version :** `{catver}`
+**{EMOJI} Python Version :** `{pyver}`
+**{EMOJI} Telethon Version :** `{telever}`"""
+
 
 
 @catub.cat_cmd(
@@ -109,11 +113,19 @@ async def amireallyalive(event):
     "A kind of showing bot details by your inline bot"
     reply_to_id = await reply_id(event)
     EMOJI = gvarstatus("ALIVE_EMOJI") or " ⚡ "
-    bot_caption = "**UserBot is Up and Running**\n"
-    bot_caption += f"**{EMOJI} Telethon version :** `{version.__version__}\n`"
-    bot_caption += f"**{EMOJI} UserBot Version :** `{catversion}`\n"
+    uptime = await get_readable_time((time.time() - StartTime))
+    start = datetime.now()
+    catevent = await edit_or_reply(event, "`Checking...`")
+    await catevent.delete()
+    end = datetime.now()
+    ms = (end - start).microseconds / 1000
+    bot_caption = "**UserBot is Up and Running**\n\n"
+    bot_caption += f"**{EMOJI} Ping :** `{ms}`\n"
+    bot_caption += f"**{EMOJI} Boss :** {mention}\n"
+    bot_caption += f"**{EMOJI} Uptime :** `{uptime}`\n"
+    bot_caption += f"**{EMOJI} Bot Version :** `{catversion}`\n"
     bot_caption += f"**{EMOJI} Python Version :** `{python_version()}\n`"
-    bot_caption += f"**{EMOJI} Boss:** {mention}\n"
+    bot_caption += f"**{EMOJI} Telethon version :** `{version.__version__}\n`"
     results = await event.client.inline_query(Config.TG_BOT_USERNAME, bot_caption)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
