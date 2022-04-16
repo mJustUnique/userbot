@@ -20,7 +20,7 @@ plugin_category = "tools"
             "c": "to create a private channel",
         },
         "usage": "{tr}create (b|g|c) <name of group/channel>",
-        "examples": "{tr}create b catuserbot",
+        "examples": "{tr}create b Test Group",
     },
 )
 async def _(event):
@@ -28,9 +28,9 @@ async def _(event):
     type_of_group = event.pattern_match.group(1)
     group_name = event.pattern_match.group(2)
     if type_of_group == "c":
-        descript = "This is a Test Channel created using catuserbot"
+        descript = "This is a Test Channel Created Using UserBot"
     else:
-        descript = "This is a Test Group created using catuserbot"
+        descript = "This is a Test Group Created Using UserBot"
     if type_of_group == "g":
         try:
             result = await event.client(
@@ -48,10 +48,10 @@ async def _(event):
                 )
             )
             await edit_or_reply(
-                event, f"Group `{group_name}` created successfully. Join {result.link}"
+                event, f"Group `{group_name}` Created Successfully. Join {result.link}"
             )
         except Exception as e:
-            await edit_delete(event, f"**Error:**\n{str(e)}")
+            await edit_delete(event, f"**Error :**\n{str(e)}")
     elif type_of_group == "c":
         try:
             r = await event.client(
@@ -69,10 +69,10 @@ async def _(event):
             )
             await edit_or_reply(
                 event,
-                f"Channel `{group_name}` created successfully. Join {result.link}",
+                f"Channel `{group_name}` Created Successfully. Join {result.link}",
             )
         except Exception as e:
-            await edit_delete(event, f"**Error:**\n{e}")
+            await edit_delete(event, f"**Error :**\n{e}")
     elif type_of_group == "b":
         answer = await create_supergroup(
             group_name, event.client, Config.TG_BOT_USERNAME, descript
@@ -80,9 +80,9 @@ async def _(event):
         if answer[0] != "error":
             await edit_or_reply(
                 event,
-                f"Mega group `{group_name}` created successfully. Join {answer[0].link}",
+                f"Mega Group `{group_name}` Created Successfully. Join {answer[0].link}",
             )
         else:
-            await edit_delete(event, f"**Error:**\n{answer[1]}")
+            await edit_delete(event, f"**Error : **\n{answer[1]}")
     else:
-        await edit_delete(event, "Read `.help create` to know how to use me")
+        await edit_delete(event, "Read `.help create` To Know How To Use Me")
