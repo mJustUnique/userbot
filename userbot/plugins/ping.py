@@ -14,20 +14,20 @@ from ..Config import Config
 from ..core.managers import edit_or_reply
 from ..helpers.functions import get_readable_time
 from ..sql_helper.globals import gvarstatus
-from . import StartTime, catub, hmention
+from . import StartTime, catub, mention
 
 plugin_category = "tools"
 
 
-temp_ = "__**☞ Pong**__"
-temp = f"<b><i>➤  Pong!</b></i>\n⚡ {ms} <b><i>ms\n🔥 Boss : {hmention}</b></i>"
+temp_ = "__**☞ Pong!**__"
+temp = "__**➤  Pong!**__\n⚡ `{ping}` 𝘮𝘴\n🔥 𝘉𝘰𝘴𝘴 : {mention}"
 if Config.BADCAT:
-    temp_ = "__**☞ Pong**__"
-    temp = f"<b><i>➤  Pong!</b></i>\n⚡ {ms} <b><i>ms\n🔥 Boss : {hmention}</b></i>"
+    temp_ = "__**☞ Pong!**__"
+    temp = "__**➤  Pong!**__\n⚡ `{ping}` 𝘮𝘴\n🔥 𝘉𝘰𝘴𝘴 : {mention}"
 
 
 @catub.cat_cmd(
-    pattern="ping( -a|$)",
+    pattern="ping( -a| -t|$)",
     command=("ping", plugin_category),
     info={
         "header": "check how long it takes to ping your userbot",
@@ -67,13 +67,17 @@ async def _(event):
             uptime=uptime,
             ping=ms,
         )
-        if PING_PIC:
+        if flag == " -t":
+            await edit_or_reply(
+                catevent,
+                caption,
+            )
+        elif PING_PIC:
             CAT = list(PING_PIC.split())
             PIC = random.choice(CAT)
             try:
                 await event.client.send_file(
-                    event.chat_id, PIC, caption=caption, reply_to=reply_to_id
-                )
+                    event.chat_id, PIC, caption=caption, reply_to=reply_to_id)
                 await catevent.delete()
             except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
                 return await edit_or_reply(
