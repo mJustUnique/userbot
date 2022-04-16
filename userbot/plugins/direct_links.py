@@ -45,7 +45,7 @@ async def direct_link_generator(event):
         if textx:
             message = textx.text
         else:
-            return await edit_delete(event, "`Usage: .direct <url>`")
+            return await edit_delete(event, "`Usage : .direct <url>`")
     catevent = await edit_or_reply(event, "`Processing...`")
     reply = ""
     links = re.findall(r"\bhttps?://.*\.\S+", message)
