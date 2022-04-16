@@ -3,7 +3,7 @@ from pathlib import Path
 
 from ..Config import Config
 from ..utils import load_module, remove_plugin
-from . import CMD_HELP, CMD_LIST, SUDO_LIST, catub, edit_delete, edit_or_reply, reply_id
+from . import CMD_HELP, CMD_LIST, SUDO_LIST, catub, edit_delete, edit_or_reply, reply_id, mention
 
 plugin_category = "tools"
 
@@ -16,7 +16,7 @@ thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg"
     command=("install", plugin_category),
     info={
         "header": "To install an external plugin.",
-        "description": "Reply to any external plugin(supported by cat) to install it in your bot.",
+        "description": "Reply to any external plugin(supported by bot) to install it in your bot.",
         "usage": "{tr}install",
     },
 )
@@ -40,10 +40,10 @@ async def install(event):
             else:
                 os.remove(downloaded_file_name)
                 await edit_delete(
-                    event, "Errors! This plugin is already installed/pre-installed.", 10
+                    event, "Error !! This plugin is already installed/pre-installed.", 10
                 )
         except Exception as e:
-            await edit_delete(event, f"**Error:**\n`{e}`", 10)
+            await edit_delete(event, f"**Error :**\n`{e}`", 10)
             os.remove(downloaded_file_name)
 
 
@@ -97,11 +97,12 @@ async def send(event):
             allow_cache=False,
             reply_to=reply_to_id,
             thumb=thumb,
-            caption=f"**➥ Plugin Name:-** `{input_str}`",
+            mention=mention,
+            caption=f"✨ **Plugin Name :** `{input_str}`\n🔥 **Uploaded By :** {mention}",
         )
         await event.delete()
     else:
-        await edit_or_reply(event, "404: File Not Found")
+        await edit_or_reply(event, "404 : File Not Found")
 
 
 @catub.cat_cmd(
@@ -109,7 +110,7 @@ async def send(event):
     command=("unload", plugin_category),
     info={
         "header": "To unload a plugin temporarily.",
-        "description": "You can load this unloaded plugin by restarting or using {tr}load cmd. Useful for cases like seting notes in rose bot({tr}unload markdown).",
+        "description": "You can load this unloaded plugin by restarting or using {tr}load cmd. Useful for cases like setting notes in rose bot({tr}unload markdown).",
         "usage": "{tr}unload <plugin name>",
         "examples": "{tr}unload markdown",
     },
