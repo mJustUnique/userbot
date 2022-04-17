@@ -20,7 +20,7 @@ plugin_category = "utils"
             "{tr}tl <language code> ; <text>",
             "{tr}tl <language codes>",
         ],
-        "examples": "{tr}tl te ; Catuserbot is one of the popular bot",
+        "examples": "{tr}tl te ; UserBot is one of the popular bot",
     },
 )
 async def _(event):
@@ -46,7 +46,7 @@ async def _(event):
                 \n`{after_tr_text}`"
         await edit_or_reply(event, output_str)
     except Exception as exc:
-        await edit_delete(event, f"**Error:**\n`{exc}`", time=5)
+        await edit_delete(event, f"**Error :**\n`{exc}`", time=5)
 
 
 @catub.cat_cmd(
