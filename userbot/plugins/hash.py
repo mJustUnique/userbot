@@ -62,7 +62,7 @@ async def gethash(hash_q):
             "de": "use this to decode the given text.",
         },
         "usage": ["{tr}hbase en <text to encode>", "{tr}hbase de <encoded text>"],
-        "examples": ["{tr}hbase en Catuserbot", "{tr}hbase de Q2F0dXNlcmJvdA=="],
+        "examples": ["{tr}hbase en UserBot", "{tr}hbase de VXNlckJvdA=="],
     },
 )
 async def endecrypt(event):
@@ -82,7 +82,7 @@ async def endecrypt(event):
                 result = base64.b64encode(bytes(reply.text, "utf-8")).decode("utf-8")
                 result = f"**Shhh! It's Encoded : **\n`{result}`"
             else:
-                catevent = await edit_or_reply(event, "`Encoding ...`")
+                catevent = await edit_or_reply(event, "`Encoding...`")
                 c_time = time.time()
                 downloaded_file_name = await event.client.download_media(
                     reply,
@@ -91,7 +91,7 @@ async def endecrypt(event):
                         progress(d, t, catevent, c_time, "trying to download")
                     ),
                 )
-                catevent = await edit_or_reply(event, "`Encoding ...`")
+                catevent = await edit_or_reply(event, "`Encoding...`")
                 with open(downloaded_file_name, "rb") as image_file:
                     result = base64.b64encode(image_file.read()).decode("utf-8")
                 os.remove(downloaded_file_name)
@@ -107,4 +107,4 @@ async def endecrypt(event):
             )[2:]
             await edit_or_reply(event, "**Decoded text :**\n`" + lething[:-1] + "`")
         except Exception as e:
-            await edit_delete(event, f"**Error:**\n__{e}__")
+            await edit_delete(event, f"**Error :**\n__{e}__")
