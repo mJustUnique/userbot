@@ -68,10 +68,10 @@ async def variable(var):  # sourcery no-metrics
             variable = var.pattern_match.group(2).split()[0]
             if variable in heroku_var:
                 return await cat.edit(
-                    "**ConfigVars**:" f"\n\n`{variable}` = `{heroku_var[variable]}`\n"
+                    "**ConfigVars** :" f"\n\n`{variable}` = `{heroku_var[variable]}`\n"
                 )
             await cat.edit(
-                "**ConfigVars**:" f"\n\n__Error:\n-> __`{variable}`__ don't exists__"
+                "**ConfigVars** :" f"\n\n__Error :\n-> __`{variable}`__ don't exists__"
             )
         except IndexError:
             configs = prettyjson(heroku_var.to_dict(), indent=2)
@@ -81,7 +81,7 @@ async def variable(var):  # sourcery no-metrics
                 result = fp.read()
                 await edit_or_reply(
                     cat,
-                    "`[HEROKU]` ConfigVars:\n\n"
+                    "`[HEROKU]` ConfigVars :\n\n"
                     "================================"
                     f"\n```{result}```\n"
                     "================================",
@@ -112,7 +112,7 @@ async def variable(var):  # sourcery no-metrics
             return await cat.edit("`Please specify ConfigVars you want to delete`")
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-            return await cat.edit(f"`{variable}`**  does not exist**")
+            return await cat.edit(f"`{variable}`**  doesn't exist**")
 
         await cat.edit(f"`{variable}`  **successfully deleted**")
         del heroku_var[variable]
@@ -151,7 +151,7 @@ async def dyno_usage(dyno):
     r = requests.get(heroku_api + path, headers=headers)
     if r.status_code != 200:
         return await dyno.edit(
-            "`Error: something bad happened`\n\n" f">.`{r.reason}`\n"
+            "`Error : something bad happened`\n\n" f">.`{r.reason}`\n"
         )
     result = r.json()
     quota = result["account_quota"]
@@ -177,8 +177,8 @@ async def dyno_usage(dyno):
     AppMinutes = math.floor(AppQuotaUsed % 60)
     await asyncio.sleep(1.5)
     return await dyno.edit(
-        "**Dyno Usage**:\n\n"
-        f" -> `Dyno usage for`  **{Config.HEROKU_APP_NAME}**:\n"
+        "**Dyno Usage** :\n\n"
+        f" -> `Dyno usage for`  **{Config.HEROKU_APP_NAME}** :\n"
         f"     •  `{AppHours}`**h**  `{AppMinutes}`**m**  "
         f"**|**  [`{AppPercentage}`**%**]"
         "\n\n"
@@ -212,7 +212,7 @@ async def _(dyno):
         )
     data = app.get_log()
     await edit_or_reply(
-        dyno, data, deflink=True, linktext="**Recent 100 lines of heroku logs: **"
+        dyno, data, deflink=True, linktext="**Recent 100 lines of heroku logs : **"
     )
 
 
