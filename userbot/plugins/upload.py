@@ -13,7 +13,7 @@ from telethon.tl import types
 from telethon.utils import get_attributes
 
 from userbot import catub
-
+from . import mention
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers import progress
@@ -106,7 +106,7 @@ async def upload(path, event, udir_event, catflag=None):  # sourcery no-metrics
         uploaded = await event.client.fast_upload_file(
             file=ul,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, event, c_time, "trying to upload", file_name=fname)
+                progress(d, t, event, c_time, "Trying To Upload...", file_name=fname)
             ),
         )
         ul.close()
@@ -120,7 +120,7 @@ async def upload(path, event, udir_event, catflag=None):  # sourcery no-metrics
         await event.client.send_file(
             event.chat_id,
             file=media,
-            caption=f"**File Name : **`{fname}`",
+            caption=f"**File Name : **`{fname}`\n**Uploaded By :** {mention}",
             reply_to=reply_to_id,
         )
 
