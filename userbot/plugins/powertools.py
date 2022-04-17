@@ -30,10 +30,10 @@ plugin_category = "tools"
 async def _(event):
     "Restarts the bot !!"
     if BOTLOG:
-        await event.client.send_message(BOTLOG_CHATID, "#RESTART \n" "Bot Restarted")
+        await event.client.send_message(BOTLOG_CHATID, "#RESTART \n" "Bot Restarted...")
     sandy = await edit_or_reply(
         event,
-        "Restarted. `.ping` me or `.help` to check if I am online, actually it takes 1-2 min for restarting",
+        "__**Restarted...**__ `.ping` me or `.help` to check if I am online, actually it takes 1-2 min for restarting.",
     )
     try:
         ulist = get_collectionlist_items()
@@ -67,7 +67,7 @@ async def _(event):
     "Shutdowns the bot"
     if BOTLOG:
         await event.client.send_message(BOTLOG_CHATID, "#SHUTDOWN \n" "Bot shut down")
-    await edit_or_reply(event, "`Turning off bot now ...Manually turn me on later`")
+    await edit_or_reply(event, "`Turning off bot now...🥱\nManually turn me on later`")
     if HEROKU_APP is not None:
         HEROKU_APP.process_formation()["worker"].scale(0)
     else:
