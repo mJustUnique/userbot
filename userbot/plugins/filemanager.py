@@ -88,8 +88,8 @@ async def lst(event):  # sourcery no-metrics
         msg += f"**Location :** `{path}`\n"
         msg += f"**icon :** `{mode}`\n"
         msg += f"**Size :** `{humanbytes(size)}`\n"
-        msg += f"**Last Modified Time:** `{time2}`\n"
-        msg += f"**Last Accessed Time:** `{time3}`"
+        msg += f"**Last Modified Time :** `{time2}`\n"
+        msg += f"**Last Accessed Time :** `{time3}`"
     if len(msg) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(msg)) as out_file:
             out_file.name = "ls.txt"
@@ -143,7 +143,7 @@ async def lst(event):
     info={
         "header": "To create a new directory.",
         "usage": "{tr}mkdir <topic>",
-        "examples": "{tr}mkdir cat",
+        "examples": "{tr}mkdir bot",
     },
 )
 async def _(event):
@@ -255,7 +255,7 @@ async def _(event):
             f"there is no such directory or file with the name `{original}` check again",
         )
     mone = await edit_or_reply(
-        event, "Moving the file ...", parse_mode=_format.parse_pre
+        event, "Moving the file...", parse_mode=_format.parse_pre
     )
     await asyncio.sleep(2)
     try:
