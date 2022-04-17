@@ -68,7 +68,7 @@ async def pic_gifcmd(event):  # sourcery no-metrics
     args = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     if not reply:
-        return await edit_delete(event, "`Reply to supported Media...`")
+        return await edit_delete(event, "`Reply to supported media...`")
     media_type(reply)
     catevent = await edit_or_reply(event, "__Making round spin video wait a sec.....__")
     output = await _cattools.media_to_pic(event, reply, noedits=True)
@@ -291,7 +291,7 @@ async def video_catfile(event):  # sourcery no-metrics
     img = ImageOps.fit(img, (w, h))
     img.putalpha(mask)
     im = io.BytesIO()
-    im.name = "cat.webp"
+    im.name = "bot.webp"
     img.save(im)
     im.seek(0)
     await event.client.send_file(event.chat_id, im, reply_to=catid)
@@ -424,7 +424,7 @@ async def get(event):
         parse_mode=parse_pre,
         aslink=True,
         noformat=True,
-        linktext="**Telegram allows only 4096 charcters in a single message. But replied file has much more. So pasting it to pastebin\nlink :**",
+        linktext="**Telegram allows only 4096 charcters in a single message. But replied file has much more. So pasting it to pastebin\nLink :**",
     )
     if os.path.exists(file_loc):
         os.remove(file_loc)
@@ -526,10 +526,10 @@ async def _(event):  # sourcery no-metrics
         media_type(catreply) != "Sticker"
         or catreply.media.document.mime_type == "image/webp"
     ):
-        return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
+        return await edit_or_reply(event, "`Stupid!, This is not an animated sticker.`")
     catevent = await edit_or_reply(
         event,
-        "Converting this Sticker to GiF...\n This may takes upto few mins..",
+        "Converting this Sticker to GiF...\n This may take upto few mins..",
         parse_mode=_format.parse_pre,
     )
     try:
@@ -774,7 +774,7 @@ async def _(event):
             args = float(args)
         except ValueError:
             args = 2.0
-    catevent = await edit_or_reply(event, "__🎞Converting into Gif..__")
+    catevent = await edit_or_reply(event, "__🎞 Converting into Gif..__")
     inputfile = await reply.download_media()
     outputfile = os.path.join(Config.TEMP_DIR, "vidtogif.gif")
     result = await vid_to_gif(inputfile, outputfile, speed=args)
