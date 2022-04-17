@@ -15,7 +15,7 @@ from ..Config import Config
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.functions import delete_conv
-from . import BOTLOG, BOTLOG_CHATID, catub, reply_id
+from . import BOTLOG, BOTLOG_CHATID, catub, reply_id, mention
 
 LOGS = logging.getLogger(__name__)
 
@@ -53,7 +53,7 @@ def resize_image(image):
 )  # sourcery no-metrics
 async def _(event):
     "To get telegraph link."
-    catevent = await edit_or_reply(event, "`processing........`")
+    catevent = await edit_or_reply(event, "`Processing........`")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
@@ -85,8 +85,8 @@ async def _(event):
             ms = (end - start).seconds
             os.remove(downloaded_file_name)
             await catevent.edit(
-                f"**link : **[telegraph](https://telegra.ph{media_urls[0]})\
-                    \n**Time Taken : **`{ms} seconds.`",
+                f"**Link : **[Telegraph](https://telegra.ph{media_urls[0]})\
+                    \n**Time Taken :** `{ms} Seconds.`\n**Uploaded By :** {mention}",
                 link_preview=True,
             )
     elif input_str in ["text", "t"]:
@@ -122,8 +122,8 @@ async def _(event):
         ms = (end - start).seconds
         cat = f"https://telegra.ph/{response['path']}"
         await catevent.edit(
-            f"**link : ** [telegraph]({cat})\
-                 \n**Time Taken : **`{ms} seconds.`",
+            f"**Link : ** [Telegraph]({cat})\
+                 \n**Time Taken : **`{ms} Seconds.`\n**Posted By :** {mention}",
             link_preview=True,
         )
 
@@ -155,13 +155,13 @@ async def ctg(event):
             msg_flag = await conv.send_message(urls[0])
         except YouBlockedUserError:
             await edit_or_reply(
-                catevent, "**Error:** Trying to unblock & retry, wait a sec..."
+                catevent, "**Error :** Trying to unblock & retry, wait a sec..."
             )
             await catub(unblock("chotamreaderbot"))
             msg_flag = await conv.send_message(urls[0])
         response = await conv.get_response()
         await event.client.send_read_acknowledge(conv.chat_id)
-        if response.text.startswith(""):
+        if response.text.startswith(""):
             await edit_or_reply(catevent, "Am I Dumb Or Am I Dumb?")
         else:
             await catevent.delete()
