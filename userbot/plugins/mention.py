@@ -40,7 +40,7 @@ async def _(event):
 )
 async def _(event):
     "To tags admins in group."
-    mentions = "@admin: **Spam Spotted**"
+    mentions = "@admin : **Spam Spotted**"
     chat = await event.get_input_chat()
     reply_to_id = await reply_id(event)
     async for x in event.client.iter_participants(
@@ -61,7 +61,7 @@ async def _(event):
             "{tr}men username/userid text",
             "text (username/mention)[custom text] text",
         ],
-        "examples": ["{tr}men @mrconfused hi", "Hi @mrconfused[How are you?]"],
+        "examples": ["{tr}men @Missrose_Bot Rose", "Miss @Missrose_Bot[Rose Bot]"],
     },
 )
 async def _(event):
