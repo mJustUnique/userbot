@@ -124,14 +124,14 @@ async def sticklet(event):
         ((512 - width) / 2, (512 - height) / 2), sticktext, font=font, fill=(R, G, B)
     )
     image_stream = io.BytesIO()
-    image_stream.name = "catuserbot.webp"
+    image_stream.name = "userbot.webp"
     image.save(image_stream, "WebP")
     image_stream.seek(0)
     # finally, reply the sticker
     await event.client.send_file(
         event.chat_id,
         image_stream,
-        caption="cat's Sticklet",
+        caption="Sticklet",
         reply_to=reply_to_id,
     )
     # cleanup
@@ -173,7 +173,7 @@ async def honk(event):
     info={
         "header": "Make a cool tweet of your account",
         "usage": "{tr}twt <text/reply to msg>",
-        "examples": "{tr}twt Catuserbot",
+        "examples": "{tr}twt UserBot",
     },
 )
 async def twt(event):
