@@ -69,10 +69,10 @@ def verify_cond(catarray, text):
 
 def pack_name(userid, pack, is_anim, is_video):
     if is_anim:
-        return f"catuserbot_{userid}_{pack}_anim"
+        return f"userbot_{userid}_{pack}_anim"
     if is_video:
-        return f"catuserbot_{userid}_{pack}_vid"
-    return f"catuserbot_{userid}_{pack}"
+        return f"userbot_{userid}_{pack}_vid"
+    return f"userbot_{userid}_{pack}"
 
 
 def char_is_emoji(character):
@@ -82,16 +82,16 @@ def char_is_emoji(character):
 def pack_nick(username, pack, is_anim, is_video):
     if gvarstatus("CUSTOM_STICKER_PACKNAME"):
         if is_anim:
-            return f"{gvarstatus('CUSTOM_STICKER_PACKNAME')} Vol.{pack} (Animated)"
+            return f"{gvarstatus('CUSTOM_STICKER_PACKNAME')} Vol. {pack} (Animated)"
         if is_video:
             return f"{gvarstatus('CUSTOM_STICKER_PACKNAME')} Vol. {pack} (Video)"
-        return f"{gvarstatus('CUSTOM_STICKER_PACKNAME')} Vol.{pack}"
+        return f"{gvarstatus('CUSTOM_STICKER_PACKNAME')} Vol. {pack}"
 
     if is_anim:
-        return f"@{username} Vol.{pack} (Animated)"
+        return f"@{username} Vol. {pack} (Animated)"
     if is_video:
         return f"@{username} Vol. {pack} (Video)"
-    return f"@{username} Vol.{pack}"
+    return f"@{username} Vol. {pack}"
 
 
 async def delpack(catevent, conv, args, packname):
@@ -308,7 +308,7 @@ async def kang(args):  # sourcery no-metrics
             user.first_name.encode("utf-8").decode("ascii")
             username = user.first_name
         except UnicodeDecodeError:
-            username = f"cat_{user.id}"
+            username = f"userbot_{user.id}"
     else:
         username = user.username
     userid = user.id
@@ -349,7 +349,7 @@ async def kang(args):  # sourcery no-metrics
                     if isinstance(attribute, DocumentAttributeSticker):
                         if message.media.document.size / 1024 > 255:
                             catevent = await edit_or_reply(
-                                args, "__⌛ File size big,,, Downloading..__"
+                                args, "__⌛ File size iz big, Downloading...__"
                             )
                             sticker = await animator(message, args, catevent)
                             await edit_or_reply(
@@ -365,7 +365,7 @@ async def kang(args):  # sourcery no-metrics
                         emoji = attribute.alt
                         emojibypass = True
             else:
-                catevent = await edit_or_reply(args, "__⌛ Downloading..__")
+                catevent = await edit_or_reply(args, "__⌛ Downloading...__")
                 sticker = await animator(message, args, catevent)
                 await edit_or_reply(catevent, f"`{random.choice(KANGING_STR)}`")
         else:
@@ -495,7 +495,7 @@ async def pack_kang(event):  # sourcery no-metrics
             user.first_name.encode("utf-8").decode("ascii")
             username = user.first_name
         except UnicodeDecodeError:
-            username = f"cat_{user.id}"
+            username = f"userbot_{user.id}"
     photo = None
     userid = user.id
     is_anim = False
@@ -666,7 +666,7 @@ async def pack_kang(event):  # sourcery no-metrics
     result = "`This sticker pack is kanged into the following your sticker pack(s):`\n"
     for i in enumerate(blablapacks):
         result += (
-            f"  •  [pack {blablapacknames[i[0]]}](t.me/addstickers/{blablapacks[i[0]]})"
+            f"[pack {blablapacknames[i[0]]}](t.me/addstickers/{blablapacks[i[0]]})"
         )
     await catevent.edit(result)
 
@@ -687,7 +687,7 @@ async def pussycat(args):
     userid = user.id
     if message and message.media:
         if "video/mp4" in message.media.document.mime_type:
-            catevent = await edit_or_reply(args, "__⌛ Downloading..__")
+            catevent = await edit_or_reply(args, "__⌛ Downloading...__")
             sticker = await animator(message, args, catevent)
             await edit_or_reply(catevent, f"`{random.choice(KANGING_STR)}`")
         else:
@@ -696,7 +696,7 @@ async def pussycat(args):
     else:
         await edit_delete(args, "`I can't convert that...`")
         return
-    packname = f"Cat_{userid}_temp_pack"
+    packname = f"Bot_{userid}_temp_pack"
     response = urllib.request.urlopen(
         urllib.request.Request(f"http://t.me/addstickers/{packname}")
     )
@@ -720,7 +720,7 @@ async def pussycat(args):
             "/newvideo",
             args,
             1,
-            "Cat",
+            "Bot",
             True,
             "😂",
             packname,
@@ -754,7 +754,7 @@ async def pussycat(args):
             "{tr}gridpack -e👌 <packname>",
         ],
         "examples": [
-            "{tr}gridpack -e👌 CatUserbot",
+            "{tr}gridpack -e👌 UserBot",
         ],
     },
 )
@@ -774,7 +774,7 @@ async def pic2packcmd(event):
         return await edit_delete(
             event, "__What's your packname ?. pass along with cmd.__"
         )
-    catevent = await edit_or_reply(event, "__🔪Cropping and adjusting the image...__")
+    catevent = await edit_or_reply(event, "__🔪 Cropping and adjusting the image...__")
     try:
         emoji = (re.findall(r"-e[\U00010000-\U0010ffff]+", args))[0]
         args = args.replace(emoji, "")
@@ -782,7 +782,7 @@ async def pic2packcmd(event):
     except Exception:
         emoji = "▫️"
     chat = "@Stickers"
-    name = "CatUserbot_" + "".join(
+    name = "UserBot_" + "".join(
         random.choice(list(string.ascii_lowercase + string.ascii_uppercase))
         for _ in range(16)
     )
@@ -802,7 +802,7 @@ async def pic2packcmd(event):
     images = await crop_and_divide(img)
     newimg.save(new_img)
     new_img.seek(0)
-    catevent = await event.edit("__Making the pack.__")
+    catevent = await event.edit("__Making the pack...__")
     async with event.client.conversation(chat) as conv:
         i = 0
         try:
@@ -826,7 +826,7 @@ async def pic2packcmd(event):
             await event.client.send_read_acknowledge(conv.chat_id)
             await asyncio.sleep(1)
             i += 1
-            await catevent.edit(f"__Making the pack.\nProgress: {i}/{len(images)}__")
+            await catevent.edit(f"__Making the pack...\nProgress : {i}/{len(images)}__")
         await event.client.send_message(chat, "/publish")
         await conv.wait_event(events.NewMessage(incoming=True, from_users=chat))
         await event.client.send_file(chat, new_img, force_document=True)
@@ -890,12 +890,12 @@ async def get_pack_info(event):
         if document_sticker.emoticon not in pack_emojis:
             pack_emojis.append(document_sticker.emoticon)
     OUTPUT = (
-        f"**Sticker Title:** `{get_stickerset.set.title}\n`"
-        f"**Sticker Short Name:** `{get_stickerset.set.short_name}`\n"
-        f"**Official:** `{get_stickerset.set.official}`\n"
-        f"**Archived:** `{get_stickerset.set.archived}`\n"
-        f"**Stickers In Pack:** `{get_stickerset.set.count}`\n"
-        f"**Emojis In Pack:**\n{' '.join(pack_emojis)}"
+        f"**Sticker Title :** `{get_stickerset.set.title}\n`"
+        f"**Sticker Short Name :** `{get_stickerset.set.short_name}`\n"
+        f"**Official :** `{get_stickerset.set.official}`\n"
+        f"**Archived :** `{get_stickerset.set.archived}`\n"
+        f"**Stickers In Pack :** `{get_stickerset.set.count}`\n"
+        f"**Emojis In Pack :**\n{' '.join(pack_emojis)}"
     )
     await catevent.edit(OUTPUT)
 
@@ -927,5 +927,5 @@ async def cb_sticker(event):
             packtitle = (pack.find("div", "sticker-pack__title")).get_text()
             packlink = (pack.a).get("href")
             packid = (pack.button).get("data-popup")
-            reply += f"\n **• ID: **`{packid}`\n [{packtitle}]({packlink})"
+            reply += f"\n **ID : **`{packid}`\n [{packtitle}]({packlink})"
     await catevent.edit(reply)
