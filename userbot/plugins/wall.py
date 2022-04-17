@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from userbot import catub
-
+from . import mention
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
@@ -103,7 +103,7 @@ async def noods(event):  # sourcery no-metrics
             await edit_or_reply(catevent, "`Max search error limit exceed..`")
     try:
         await edit_or_reply(catevent, "`Sending...`")
-        captionlist[-1] = f"**➥ Query :-** `{query.title()}`"
+        captionlist[-1] = f"**Query :** `{query.title()}`\nBy : {mention}"
         await event.client.send_file(
             event.chat_id,
             piclist,
