@@ -31,7 +31,7 @@ async def _(event):
     stdout, stderr = await process.communicate()
     result = str(stdout.decode().strip()) + str(stderr.decode().strip())
     catuser = await event.client.get_me()
-    curruser = catuser.username or "catuserbot"
+    curruser = catuser.username or "UserBot"
     uid = os.geteuid()
     if uid == 0:
         cresult = f"```{curruser}:~#``` ```{cmd}```\n```{result}```"
@@ -41,7 +41,7 @@ async def _(event):
         catevent,
         text=cresult,
         aslink=True,
-        linktext=f"**•  Exec : **\n```{cmd}``` \n\n**•  Result : **\n",
+        linktext=f"**Exec : **\n```{cmd}``` \n\n**Result : **\n",
     )
     if BOTLOG:
         await event.client.send_message(
@@ -55,20 +55,20 @@ async def _(event):
     info={
         "header": "To Execute python script/statements in a subprocess.",
         "usage": "{tr}eval <command>",
-        "examples": "{tr}eval print('catuserbot')",
+        "examples": "{tr}eval print('Le Bhaiye Omfoo...')",
     },
 )
 async def _(event):
     "To Execute python script/statements in a subprocess."
     cmd = "".join(event.message.message.split(maxsplit=1)[1:])
     if not cmd:
-        return await edit_delete(event, "`What should i run ?..`")
+        return await edit_delete(event, "`What should i run..?`")
     cmd = (
         cmd.replace("sendmessage", "send_message")
         .replace("sendfile", "send_file")
         .replace("editmessage", "edit_message")
     )
-    catevent = await edit_or_reply(event, "`Running ...`")
+    catevent = await edit_or_reply(event, "`Running...`")
     old_stderr = sys.stderr
     old_stdout = sys.stdout
     redirected_output = sys.stdout = io.StringIO()
@@ -92,13 +92,13 @@ async def _(event):
     else:
         evaluation = "Success"
     final_output = (
-        f"**•  Eval : **\n```{cmd}``` \n\n**•  Result : **\n```{evaluation}``` \n"
+        f"**Eval : **\n```{cmd}``` \n\n**Result : **\n```{evaluation}``` \n"
     )
     await edit_or_reply(
         catevent,
         text=final_output,
         aslink=True,
-        linktext=f"**•  Eval : **\n```{cmd}``` \n\n**•  Result : **\n",
+        linktext=f"**Eval : **\n```{cmd}``` \n\n**Result : **\n",
     )
     if BOTLOG:
         await event.client.send_message(
