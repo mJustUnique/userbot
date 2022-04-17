@@ -48,7 +48,7 @@ async def _(event):
     info={
         "header": "To short the given url.",
         "usage": "{tr}short <url/reply to url>",
-        "examples": "{tr}short https://github.com/TgCatUB/catuserbot",
+        "examples": "{tr}short https://github.com",
     },
 )
 async def _(event):
@@ -84,7 +84,7 @@ async def _(event):
     info={
         "header": "To unshort the given dagb shorten url.",
         "usage": "{tr}unshort <url/reply to url>",
-        "examples": "{tr}unshort https://da.gd/rm6qri",
+        "examples": "{tr}unshort https://da.gd/cLDU",
     },
 )
 async def _(event):
@@ -109,7 +109,7 @@ async def _(event):
     if str(r.status_code).startswith("3"):
         await edit_or_reply(
             event,
-            f"Input URL: {input_str}\nReDirected URL: {r.headers['Location']}",
+            f"Input URL : {input_str}\nReDirected URL : {r.headers['Location']}",
             link_preview=False,
         )
     else:
@@ -126,7 +126,7 @@ async def _(event):
     info={
         "header": "To hide the url with white spaces using hyperlink.",
         "usage": "{tr}hl <url/reply to url>",
-        "examples": "{tr}hl https://da.gd/rm6qri",
+        "examples": "{tr}hl https://da.gd/cLDU",
     },
 )
 async def _(event):
