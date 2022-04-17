@@ -27,8 +27,8 @@ LOGS = logging.getLogger(__name__)
 # =========================================================== #
 #                           STRINGS                           #
 # =========================================================== #
-SONG_SEARCH_STRING = "<code>wi8..! I am finding your song....</code>"
-SONG_NOT_FOUND = "<code>Sorry !I am unable to find any song like that</code>"
+SONG_SEARCH_STRING = "<code>wi8..! I'm finding your song....</code>"
+SONG_NOT_FOUND = "<code>Sorry! i'm unable to find any song like that</code>"
 SONG_SENDING_STRING = "<code>yeah..! i found something wi8..🥰...</code>"
 # =========================================================== #
 #                                                             #
@@ -59,11 +59,11 @@ async def _(event):
     else:
         return await edit_or_reply(event, "`What I am Supposed to find `")
     cat = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catevent = await edit_or_reply(event, "`wi8..! I am finding your song....`")
+    catevent = await edit_or_reply(event, "`wi8..! I'm finding your song....`")
     video_link = await yt_search(str(query))
     if not url(video_link):
         return await catevent.edit(
-            f"Sorry!. I can't find any related video/audio for `{query}`"
+            f"Sorry! I can't find any related video/audio for `{query}`"
         )
     cmd = event.pattern_match.group(1)
     q = "320k" if cmd == "320" else "128k"
@@ -87,7 +87,7 @@ async def _(event):
         pass
     if not os.path.exists(song_file):
         return await catevent.edit(
-            f"Sorry!. I can't find any related video/audio for `{query}`"
+            f"Sorry! I can't find any related video/audio for `{query}`"
         )
     await catevent.edit("`yeah..! i found something wi8..🥰`")
     catthumb = Path(f"{catname}.jpg")
@@ -100,7 +100,7 @@ async def _(event):
         event.chat_id,
         song_file,
         force_document=False,
-        caption=f"**Title:** `{title}`",
+        caption=f"**Title :** `{title}`",
         thumb=catthumb,
         supports_streaming=True,
         reply_to=reply_to_id,
@@ -130,13 +130,13 @@ async def _(event):
     elif reply and reply.message:
         query = reply.message
     else:
-        return await edit_or_reply(event, "`What I am Supposed to find`")
+        return await edit_or_reply(event, "`What I'm Supposed to find?`")
     cat = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catevent = await edit_or_reply(event, "`wi8..! I am finding your song....`")
+    catevent = await edit_or_reply(event, "`wi8..! I'm finding your song....`")
     video_link = await yt_search(str(query))
     if not url(video_link):
         return await catevent.edit(
-            f"Sorry!. I can't find any related video/audio for `{query}`"
+            f"Sorry! I can't find any related video/audio for `{query}`"
         )
     try:
         cat = Get(cat)
@@ -160,7 +160,7 @@ async def _(event):
         vsong_file = Path(f"{catname}.mkv")
     elif not os.path.exists(vsong_file):
         return await catevent.edit(
-            f"Sorry!. I can't find any related video/audio for `{query}`"
+            f"Sorry! I can't find any related video/audio for `{query}`"
         )
     await catevent.edit("`yeah..! i found something wi8..🥰`")
     catthumb = Path(f"{catname}.jpg")
@@ -172,7 +172,7 @@ async def _(event):
     await event.client.send_file(
         event.chat_id,
         vsong_file,
-        caption=f"**Title:** `{title}`",
+        caption=f"**Title :** `{title}`",
         thumb=catthumb,
         supports_streaming=True,
         reply_to=reply_to_id,
@@ -221,7 +221,7 @@ async def shazamcmd(event):
     except Exception as e:
         LOGS.error(e)
         return await edit_delete(
-            catevent, f"**Error while reverse searching song:**\n__{e}__"
+            catevent, f"**Error while reverse searching song :**\n__{e}__"
         )
 
     image = track["images"]["background"]
@@ -253,7 +253,7 @@ async def _(event):
             purgeflag = await conv.send_message("/start")
         except YouBlockedUserError:
             await edit_or_reply(
-                catevent, "**Error:** Trying to unblock & retry, wait a sec..."
+                catevent, "**Error :** Trying to unblock & retry, wait a sec..."
             )
             await catub(unblock("songdl_bot"))
             purgeflag = await conv.send_message("/start")
@@ -280,7 +280,7 @@ async def _(event):
         await event.client.send_file(
             event.chat_id,
             music,
-            caption=f"<b>Title :- <code>{song}</code></b>",
+            caption=f"<b>Title : <code>{song}</code></b>",
             parse_mode="html",
             reply_to=reply_id_,
         )
