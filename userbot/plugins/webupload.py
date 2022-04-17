@@ -5,7 +5,7 @@ import re
 import subprocess
 
 import requests
-
+from . import mention
 from userbot import catub
 from userbot.core.logger import logging
 
@@ -159,8 +159,8 @@ async def _(event):
         result = ""
         for i in urls:
             if not result:
-                result = "**Uploaded File link/links :**"
-            result += f"\n{i[0]}"
+                result = "**Uploaded File Link(s) :**"
+            result += f"\n{i[0]}\n**Uploaded By :** {mention}"
         await editor.edit(result)
     else:
         await editor.edit(error)
