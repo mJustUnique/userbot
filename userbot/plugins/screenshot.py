@@ -27,14 +27,14 @@ plugin_category = "utils"
     info={
         "header": "To Take a screenshot of a website.",
         "usage": "{tr}ss <link>",
-        "examples": "{tr}ss https://github.com/TgCatUB/catuserbot",
+        "examples": "{tr}ss https://github.com",
     },
 )
 async def _(event):
     "To Take a screenshot of a website."
     if Config.CHROME_BIN is None:
         return await edit_or_reply(
-            event, "Need to install Google Chrome. Module Stopping."
+            event, "Need to install Google Chrome Module !!"
         )
     catevent = await edit_or_reply(event, "`Processing ...`")
     start = datetime.now()
@@ -79,7 +79,7 @@ async def _(event):
         message_id = await reply_id(event)
         end = datetime.now()
         ms = (end - start).seconds
-        hmm = f"**url : **{input_str} \n**Time :** `{ms} seconds`"
+        hmm = f"**URL : **{input_str} \n**Time :** `{ms} Seconds`"
         await catevent.delete()
         with io.BytesIO(im_png) as out_file:
             out_file.name = f"{input_str}.PNG"
@@ -103,7 +103,7 @@ async def _(event):
         "header": "To Take a screenshot of a website.",
         "description": "For functioning of this command you need to set SCREEN_SHOT_LAYER_ACCESS_KEY var",
         "usage": "{tr}scapture <link>",
-        "examples": "{tr}scapture https://github.com/TgCatUB/catuserbot",
+        "examples": "{tr}scapture https://github.com",
     },
 )
 async def _(event):
@@ -134,7 +134,7 @@ async def _(event):
     contentType = response_api.headers["content-type"]
     end = datetime.now()
     ms = (end - start).seconds
-    hmm = f"**url : **{input_str} \n**Time :** `{ms} seconds`"
+    hmm = f"**URL : **{input_str} \n**Time :** `{ms} Seconds`"
     if "image" in contentType:
         with io.BytesIO(response_api.content) as screenshot_image:
             screenshot_image.name = "screencapture.png"
