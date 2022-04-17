@@ -44,7 +44,7 @@ async def psu(event):
     # Boot Time
     boot_time_timestamp = psutil.boot_time()
     bt = datetime.fromtimestamp(boot_time_timestamp)
-    softw += f"`Boot Time: {bt.day}/{bt.month}/{bt.year}  {bt.hour}:{bt.minute}:{bt.second}`\n"
+    softw += f"`Boot Time : {bt.day}/{bt.month}/{bt.year}  {bt.hour}:{bt.minute}:{bt.second}`\n"
     # CPU Cores
     cpuu = "**CPU Info**\n"
     cpuu += f"`Physical cores   : {str(psutil.cpu_count(logical=False))}" + "`\n"
@@ -94,7 +94,7 @@ async def cpu(event):
     cmd = "cat /proc/cpuinfo | grep 'model name'"
     o = (await _catutils.runcmd(cmd))[0]
     await edit_or_reply(
-        event, f"**[Cat's](tg://need_update_for_some_feature/) CPU Model:**\n{o}"
+        event, f"**[Bot's](tg://need_update_for_some_feature/) CPU Model :**\n{o}"
     )
 
 
@@ -115,4 +115,4 @@ async def sysdetails(sysd):
                     --cpu_speed on --cpu_cores physical --kernel_shorthand off --stdout"
     a, b, c, d = await _catutils.runcmd(neo)
     result = str(a) + str(b)
-    await edit_or_reply(catevent, f"**Neofetch Result:** `{result}`")
+    await edit_or_reply(catevent, f"**Neofetch Result :** `{result}`")
