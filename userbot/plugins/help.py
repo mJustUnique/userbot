@@ -87,11 +87,11 @@ async def plugininfo(input_str, event, flag):
     if category is not None:
         outstr += f"**Category :** `{category}`\n\n"
     for cmd in sorted(cmds):
-        outstr += f"•  **cmd :** `{cmdprefix}{cmd}`\n"
+        outstr += f"**cmd :** `{cmdprefix}{cmd}`\n"
         try:
-            outstr += f"•  **info :** `{CMD_INFO[cmd][1]}`\n\n"
+            outstr += f"**info :** `{CMD_INFO[cmd][1]}`\n\n"
         except IndexError:
-            outstr += "•  **info :** `None`\n\n"
+            outstr += "**info :** `None`\n\n"
     outstr += f"**👩‍💻 Usage : ** `{cmdprefix}help <command name>`\
         \n**Note : **If command name is same as plugin name then use this `{cmdprefix}help -c <command name>`."
     return outstr
@@ -216,7 +216,7 @@ async def _(event):
         out = f"**I found {len(found)} command(s) for: **`{cmd}`\n\n{out_str}"
         out += f"\n\n__For more info check {cmdprefix}help -c <command>__"
     else:
-        out = f"I can't find any such command `{cmd}` in CatUserbot"
+        out = f"I can't find any `{cmd}` command in your UserBot"
     await edit_or_reply(event, out)
 
 
