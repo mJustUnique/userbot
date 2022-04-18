@@ -60,7 +60,7 @@ video_opts = {
 async def ytdl_down(event, opts, url):
     ytdl_data = None
     try:
-        await event.edit("`Fetching data, please wait..`")
+        await event.edit("`Fetching data, please wait...`")
         with YoutubeDL(opts) as ytdl:
             ytdl_data = ytdl.extract_info(url)
     except DownloadError as DE:
@@ -78,7 +78,7 @@ async def ytdl_down(event, opts, url):
     except UnavailableVideoError:
         await event.edit("`Media is not available in the requested format.`")
     except XAttrMetadataError as XAME:
-        await event.edit(f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
+        await event.edit(f"`{XAME.code} : {XAME.msg}\n{XAME.reason}`")
     except ExtractorError:
         await event.edit("`There was an error during info extraction.`")
     except Exception as e:
@@ -169,7 +169,7 @@ async def download_audio(event):
                 url, download=False
             )
         except ExtractorError:
-            vid_data = {"title": url, "uploader": "Catuserbot", "formats": []}
+            vid_data = {"title": url, "uploader": "UserBot", "formats": []}
         startTime = time()
         retcode = await _mp3Dl(url=url, starttime=startTime, uid="320")
         if retcode != 0:
@@ -184,7 +184,7 @@ async def download_audio(event):
         if not _fpath:
             return await edit_delete(catevent, "__Unable to upload file__")
         await catevent.edit(
-            f"`Preparing to upload video:`\
+            f"`Preparing to upload video :`\
             \n**{vid_data['title']}***"
         )
         attributes, mime_type = get_attributes(str(_fpath))
@@ -203,7 +203,7 @@ async def download_audio(event):
                     t,
                     catevent,
                     startTime,
-                    "trying to upload",
+                    "Trying To Upload...",
                     file_name=os.path.basename(pathlib.Path(_fpath)),
                 )
             ),
@@ -265,7 +265,7 @@ async def download_video(event):
             if not os.path.exists(catthumb):
                 catthumb = None
             await catevent.edit(
-                f"`Preparing to upload video:`\
+                f"`Preparing to upload video :`\
                 \n**{ytdl_data['title']}**"
             )
             ul = io.open(f, "rb")
@@ -334,7 +334,7 @@ async def insta_dl(event):
             v1_flag = await conv.send_message("/start")
         except YouBlockedUserError:
             await edit_or_reply(
-                catevent, "**Error:** Trying to unblock & retry, wait a sec..."
+                catevent, "**Error :** Trying to unblock & retry, wait a sec..."
             )
             await catub(unblock("instasave_bot"))
             v1_flag = await conv.send_message("/start")
@@ -371,7 +371,7 @@ async def insta_dl(event):
                 v2_flag = await conv.send_message("/start")
             except YouBlockedUserError:
                 await edit_or_reply(
-                    catevent, "**Error:** Trying to unblock & retry, wait a sec..."
+                    catevent, "**Error :** Trying to unblock & retry, wait a sec..."
                 )
                 await catub(unblock("videomaniacbot"))
                 v2_flag = await conv.send_message("/start")
@@ -388,7 +388,7 @@ async def insta_dl(event):
                     error = checker.splitlines()[2]
                     await event.client.send_message(
                         BOTLOG_CHATID,
-                        f"**#V1_ERROR :-**\n\n__Currently we using @instasave_bot for v1, that need users to join this chat : {error}__\n\n__If you know any good bot which does'nt need join channel, inform us here: @catuserbot_support__",
+                        f"**#V1_ERROR :-**\n\n__Currently we using @instasave_bot for v1, that need users to join this chat : {error}__",
                     )
                 await catevent.delete()
                 await event.client.send_file(event.chat_id, media)
@@ -435,5 +435,5 @@ async def yt_search(event):
         full_response = await ytsearch(query, limit=lim)
     except Exception as e:
         return await edit_delete(video_q, str(e), time=10, parse_mode=_format.parse_pre)
-    reply_text = f"**•  Search Query:**\n`{query}`\n\n**•  Results:**\n{full_response}"
+    reply_text = f"**Search Query:**\n`{query}`\n\n**Results:**\n{full_response}"
     await edit_or_reply(video_q, reply_text)
