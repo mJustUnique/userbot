@@ -114,7 +114,7 @@ async def _(event):  # sourcery no-metrics
         end = datetime.now()
         ms = (end - start).seconds
         await mone.edit(
-            f"**Downloaded in {ms} seconds.**\n**Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
+            f"**Downloaded in :** `{ms} seconds.`\n**Downloaded to :** `{os.path.relpath(file_name,os.getcwd())}`\n   "
         )
     elif input_str:
         start = datetime.now()
@@ -164,7 +164,7 @@ async def _(event):  # sourcery no-metrics
         ms = (end - start).seconds
         if downloader.isSuccessful():
             await mone.edit(
-                f"**Downloaded in {ms} seconds.**\n**Downloaded file location :- ** `{os.path.relpath(downloaded_file_name,os.getcwd())}`"
+                f"**Downloaded in :** `{ms} seconds.`\n**Downloaded file location :** `{os.path.relpath(downloaded_file_name,os.getcwd())}`"
             )
         else:
             await mone.edit("Incorrect URL\n {}".format(input_str))
@@ -208,7 +208,7 @@ async def _(event):  # sourcery no-metrics
             parse_mode=_format.parse_pre,
         )
     mone = await edit_or_reply(
-        event, "Downloading the file ...", parse_mode=_format.parse_pre
+        event, "Downloading the file...", parse_mode=_format.parse_pre
     )
     start = datetime.now()
     for attr in getattr(reply.document, "attributes", []):
@@ -269,5 +269,5 @@ async def _(event):  # sourcery no-metrics
     end = datetime.now()
     ms = (end - start).seconds
     await mone.edit(
-        f"**Downloaded in {ms} seconds.**\n**Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
+        f"**Downloaded in :** `{ms} seconds.`\n**Downloaded to :**  `{os.path.relpath(file_name,os.getcwd())}`\n   "
     )
