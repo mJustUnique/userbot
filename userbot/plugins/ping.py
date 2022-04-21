@@ -67,7 +67,7 @@ async def _(event):
             uptime=uptime,
             ping=ms,
         )
-        if PING_PIC and flag == " -p":
+        elif PING_PIC and flag == " -p":
             CAT = list(PING_PIC.split())
             PIC = random.choice(CAT)
             try:
