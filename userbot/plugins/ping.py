@@ -27,12 +27,12 @@ if Config.BADCAT:
 
 
 @catub.cat_cmd(
-    pattern="ping( -a| -t|$)",
+    pattern="ping( a| t|$)",
     command=("ping", plugin_category),
     info={
         "header": "check how long it takes to ping your userbot",
-        "flags": {"a": "average ping", "p": "ping with pic"},
-        "usage": ["{tr}ping", "{tr}ping a", "{tr}ping p"],
+        "flags": {"a": "average ping", "t":"only ping text"},
+        "usage": ["{tr}ping", "{tr}ping a", "{tr}ping t"],
     },
 )
 async def _(event):
@@ -67,7 +67,12 @@ async def _(event):
             uptime=uptime,
             ping=ms,
         )
-        elif flag == " p":
+        if flag == " t":
+            await edit_or_reply(
+                catevent,
+                caption,
+            )
+        elif PING_PIC:
             CAT = list(PING_PIC.split())
             PIC = random.choice(CAT)
             try:
