@@ -31,8 +31,8 @@ if Config.BADCAT:
     command=("ping", plugin_category),
     info={
         "header": "check how long it takes to ping your userbot",
-        "flags": {"-a": "average ping"},
-        "usage": ["{tr}ping", "{tr}ping -a"],
+        "flags": {"-a": "average ping", " -p": "ping with pic"},
+        "usage": ["{tr}ping", "{tr}ping -a", "{tr}ping -p"],
     },
 )
 async def _(event):
@@ -67,12 +67,7 @@ async def _(event):
             uptime=uptime,
             ping=ms,
         )
-        if flag == " -t":
-            await edit_or_reply(
-                catevent,
-                caption,
-            )
-        elif PING_PIC:
+        if PING_PIC and flag == " -p":
             CAT = list(PING_PIC.split())
             PIC = random.choice(CAT)
             try:
