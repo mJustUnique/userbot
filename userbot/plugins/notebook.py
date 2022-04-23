@@ -55,8 +55,8 @@ Colors = [
 
 def notebook_values(page, font):
     if page == "a4":
-        position = (75, 10)
-        lines = 28
+        position = (75, 13)
+        lines = 27
         if font == "BrownBag":
             text_wrap = 1.1
             font_size = 50
