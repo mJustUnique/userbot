@@ -1,17 +1,17 @@
 import os
 from pathlib import Path
-
+ 
 from telethon.tl.types import InputMessagesFilterDocument
-
+ 
 from ..Config import Config
 from ..helpers.utils import install_pip
 from ..utils import load_module
 from . import BOTLOG, BOTLOG_CHATID, catub
-
+ 
 plugin_category = "tools"
-
+ 
 if Config.PLUGIN_CHANNEL:
-
+ 
     async def install():
         documentss = await catub.get_messages(
             Config.PLUGIN_CHANNEL, None, filter=InputMessagesFilterDocument
@@ -42,7 +42,8 @@ if Config.PLUGIN_CHANNEL:
             if BOTLOG:
                 await catub.send_message(
                     BOTLOG_CHATID,
-                    f"ɪɴsᴛᴀʟʟᴇᴅ ᴇxᴛᴇʀɴᴀʟ ᴘʟᴜɢɪɴs sᴜᴄᴄᴇssғᴜʟʟʏ.",
+                    f"ɪɴsᴛᴀʟʟᴇᴅ ᴘʟᴜɢɪɴ `{os.path.basename(downloaded_file_name)}` sᴜᴄᴄᴇssғᴜʟʟʏ.",
                 )
-
+ 
     catub.loop.create_task(install())
+ 
