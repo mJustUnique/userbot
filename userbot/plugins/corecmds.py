@@ -66,11 +66,11 @@ async def load(event):
         except BaseException:
             pass
         load_module(shortname)
-        await edit_delete(event, f"`sᴜᴄᴄᴇssғᴜʟʟʏ ʟᴏᴀᴅᴇᴅ {shortname}`", 10)
+        await edit_delete(event, f"sᴜᴄᴄᴇssғᴜʟʟʏ ʟᴏᴀᴅᴇᴅ `{shortname}.py`", 10)
     except Exception as e:
         await edit_or_reply(
             event,
-            f"ᴄᴏᴜʟᴅ ɴᴏᴛ ʟᴏᴀᴅ {shortname} ʙᴇᴄᴀᴜsᴇ ᴏғ ᴛʜᴇ ғᴏʟʟᴏᴡɪɴɢ ᴇʀʀᴏʀ.\n{e}",
+            f"ᴄᴏᴜʟᴅ ɴᴏᴛ ʟᴏᴀᴅ `{shortname}.py` ʙᴇᴄᴀᴜsᴇ ᴏғ ᴛʜᴇ ғᴏʟʟᴏᴡɪɴɢ ᴇʀʀᴏʀ.\n{e}",
         )
 
 
@@ -120,9 +120,9 @@ async def unload(event):
     shortname = event.pattern_match.group(1)
     try:
         remove_plugin(shortname)
-        await edit_or_reply(event, f"ᴜɴʟᴏᴀᴅᴇᴅ {shortname} sᴜᴄᴄᴇssғᴜʟʟʏ")
+        await edit_or_reply(event, f"ᴜɴʟᴏᴀᴅᴇᴅ `{shortname}.py` sᴜᴄᴄᴇssғᴜʟʟʏ")
     except Exception as e:
-        await edit_or_reply(event, f"ғᴀɪʟᴇᴅ ᴛᴏ ᴜɴʟᴏᴀᴅ {shortname} ʙᴇᴄᴀᴜsᴇ ᴏғ ᴛʜᴇ ғᴏʟʟᴏᴡɪɴɢ ᴇʀʀᴏʀ.\n{e}")
+        await edit_or_reply(event, f"ғᴀɪʟᴇᴅ ᴛᴏ ᴜɴʟᴏᴀᴅ `{shortname}.py` ʙᴇᴄᴀᴜsᴇ ᴏғ ᴛʜᴇ ғᴏʟʟᴏᴡɪɴɢ ᴇʀʀᴏʀ.\n{e}")
 
 
 @catub.cat_cmd(
@@ -153,6 +153,6 @@ async def unload(event):
         CMD_HELP.pop(shortname)
     try:
         remove_plugin(shortname)
-        await edit_or_reply(event, f"{shortname} ɪs ᴜɴɪɴsᴛᴀʟʟᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ.")
+        await edit_or_reply(event, f"`{shortname}.py` ɪs ᴜɴɪɴsᴛᴀʟʟᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ.")
     except Exception as e:
-        await edit_or_reply(event, f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴜɴɪɴsᴛᴀʟʟᴇᴅ {shortname}\n{e}")
+        await edit_or_reply(event, f"ғᴀɪʟᴇᴅ ᴛᴏ ᴜɴɪɴsᴛᴀʟʟ `{shortname}.py`\n{e}")
