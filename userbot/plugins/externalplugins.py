@@ -6,7 +6,7 @@ from telethon.tl.types import InputMessagesFilterDocument
 from ..Config import Config
 from ..helpers.utils import install_pip
 from ..utils import load_module
-from . import BOTLOG, BOTLOG_CHATID, catub, tgbot
+from . import BOTLOG, BOTLOG_CHATID, catub
 
 plugin_category = "tools"
 
@@ -40,9 +40,9 @@ if Config.PLUGIN_CHANNEL:
                     if check > 5:
                         break
             if BOTLOG:
-                await catub.tgbot.send_message(
+                await catub.send_message(
                     BOTLOG_CHATID,
-                    f"**ɪɴsᴛᴀʟʟᴇᴅ ᴘʟᴜɢɪɴ** `{os.path.basename(downloaded_file_name)}` **sᴜᴄᴄᴇssғᴜʟʟʏ.**",
+                    f"ɪɴsᴛᴀʟʟᴇᴅ ᴇxᴛᴇʀɴᴀʟ ᴘʟᴜɢɪɴs sᴜᴄᴄᴇssғᴜʟʟʏ.",
                 )
 
     catub.loop.create_task(install())
