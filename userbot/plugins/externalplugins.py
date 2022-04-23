@@ -1,5 +1,6 @@
 import os
 import asyncio
+import random
 from pathlib import Path
  
 from telethon.tl.types import InputMessagesFilterDocument
