@@ -40,9 +40,9 @@ if Config.PLUGIN_CHANNEL:
                     if check > 5:
                         break
             if BOTLOG:
-                await catub.tgbot.send_message(
+                await catub.send_message(
                     BOTLOG_CHATID,
-                    f"**ɪɴsᴛᴀʟʟᴇᴅ ᴘʟᴜɢɪɴ** `{os.path.basename(downloaded_file_name)}` **sᴜᴄᴄᴇssғᴜʟʟʏ.**",
+                    f"**ɪɴsᴛᴀʟʟᴇᴅ ᴘʟᴜɢɪɴs** `{os.path.basename(plugin_name)}` **sᴜᴄᴄᴇssғᴜʟʟʏ.**",
                 )
 
     catub.loop.create_task(install())
