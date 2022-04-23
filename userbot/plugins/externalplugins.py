@@ -9,6 +9,8 @@ from ..utils import load_module
 from . import BOTLOG, BOTLOG_CHATID, catub
  
 plugin_category = "tools"
+
+sleep = [4, 5, 6, 7, 8]
  
 if Config.PLUGIN_CHANNEL:
  
@@ -40,6 +42,7 @@ if Config.PLUGIN_CHANNEL:
                     if check > 5:
                         break
             if BOTLOG:
+                await asyncio.sleep(random.choice(sleep))
                 await catub.send_message(
                     BOTLOG_CHATID,
                     f"ɪɴsᴛᴀʟʟᴇᴅ ᴘʟᴜɢɪɴ `{os.path.basename(downloaded_file_name)}` sᴜᴄᴄᴇssғᴜʟʟʏ.",
