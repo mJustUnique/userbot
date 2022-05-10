@@ -54,8 +54,7 @@ def ibuild_keyboard(buttons):
 
 
 def main_menu():
-    text = f"𝗨𝘀𝗲𝗿𝗕𝗼𝘁 𝗛𝗲𝗹𝗽 𝗠𝗲𝗻𝘂\
-        \n𝗣𝗿𝗼𝘃𝗶𝗱𝗲𝗱 𝗧𝗼 {mention}"
+    text = f"𝙐𝙨𝙚𝙧𝘽𝙤𝙩 𝙃𝙚𝙡𝙥 𝙈𝙚𝙣𝙪\n𝙋𝙧𝙤𝙫𝙞𝙙𝙚𝙙 𝙏𝙤 {mention} "
     if Config.BADCAT:
         buttons = [
             (Button.inline("ℹ️ Info", data="check"),),
@@ -608,13 +607,13 @@ async def inline_handler(event):  # sourcery no-metrics
             url=BOTLOGO, size=0, mime_type="image/jpeg", attributes=[]
         )
         text, msg_entities = await event.client._parse_message_text(
-            "𝗗𝗲𝗽𝗹𝗼𝘆 𝗬𝗼𝘂𝗿 𝗢𝘄𝗻 𝗨𝘀𝗲𝗿𝗕𝗼𝘁.", "md"
+            "**__TF... You Trying To Do?__** 🤨", "md"
         )
         result = types.InputBotInlineResult(
             id=str(uuid4()),
             type="photo",
-            title="𝙐𝙨𝙚𝙧𝘽𝙤𝙩",
-            description="Deploy Yourself !!",
+            title="𝙇𝙀𝙂𝙀𝙉𝘿'𝙨 𝘼𝙨𝙨𝙞𝙨𝙩𝙖𝙣𝙩",
+            description="Only My Boss Can Access Me !!",
             url="https://github.com/",
             thumb=photo,
             content=photo,
