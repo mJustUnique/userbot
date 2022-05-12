@@ -191,7 +191,7 @@ async def do_pm_options_action(event, chat):
     except AttributeError:
         PMMESSAGE_CACHE = {}
     if str(chat.id) not in PM_WARNS:
-        text = "__Select option from above message and wait. Don't spam my inbox, this is your last warning.__"
+        text = "__Select option from above message and wait. Don't spam my inbox, this is your last warning !!__"
         await event.reply(text)
         PM_WARNS[str(chat.id)] = 1
         sql.del_collection("pmwarns")
@@ -210,7 +210,7 @@ async def do_pm_options_action(event, chat):
         LOGS.info(str(e))
     sql.del_collection("pmmessagecache")
     sql.add_collection("pmmessagecache", PMMESSAGE_CACHE, {})
-    USER_BOT_WARN_ZERO = "**If I remember correctly I mentioned in my previous message that this is not the right place for you to spam. \\\x1fThough you ignored that message.So, I simply blocked you. \\\x1fNow you can't do anything unless my boss comes online and unblocks you.**"
+    USER_BOT_WARN_ZERO = "**If I remember correctly I mentioned in my previous message that this is not the right place for you to spam.\nThough you ignored that message.So, I simply blocked you.\nNow you can't do anything unless my boss comes online and unblocks you.**"
 
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
@@ -385,7 +385,7 @@ async def do_pm_spam_action(event, chat):
             del PMMESSAGE_CACHE[str(chat.id)]
     except Exception as e:
         LOGS.info(str(e))
-    USER_BOT_WARN_ZERO = "**If I remember correctly I mentioned in my previous message this is not the right place for you to spam. \\\x1fThough you ignored that message. So, I simply blocked you. \\\x1fNow you can't do anything unless my boss comes online and unblocks you.**"
+    USER_BOT_WARN_ZERO = "**If I remember correctly I mentioned in my previous message this is not the right place for you to spam.\nThough you ignored that message. So, I simply blocked you.\nNow you can't do anything unless my boss comes online and unblocks you.**"
 
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
