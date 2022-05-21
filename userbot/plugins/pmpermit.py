@@ -129,7 +129,7 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
     elif gvarstatus("pmmenu") is None:
         USER_BOT_NO_WARN = f"""__HaHa..!__ 😂 
 
-{mention}  || __See... How Cute You Are Trying To PM My Boss, Anyway He/She May Answer And May Not Too
+{mention}  || __See... How Cute You Are Trying To PM My Boss, Anyway He/She May Answer And May Not Too...
 You Can Expect A Reply Within 24 Light Years. He/She Is A Busy Man, Unlike You Probably.
 
 You Have {warns}/{totalwarns} Warns & If You Spam..!__
@@ -215,7 +215,7 @@ async def do_pm_options_action(event, chat):
         LOGS.info(str(e))
     sql.del_collection("pmmessagecache")
     sql.add_collection("pmmessagecache", PMMESSAGE_CACHE, {})
-    USER_BOT_WARN_ZERO = "**If I Remember Correctly I Mentioned In My Previous Message That This Is Not The Right Place For You To Spam.\nThough You Ignored That Message.So, I Simply Blocked You.\nNow You Can't Do Anything Unless My Boss Comes Online And Unblocks You.**"
+    USER_BOT_WARN_ZERO = "**If I Remember Correctly I Mentioned In My Previous Message That This Is Not The Right Place For You To Spam.\nThough You Ignored That Message. So, I Simply Blocked You.\nNow You Can't Do Anything Unless My Boss Comes Online And Unblocks You.**"
 
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
@@ -264,7 +264,7 @@ __My Boss Will Respond When He/She Comes Online, If He/She Wants To.__
         LOGS.info(str(e))
     sql.del_collection("pmmessagecache")
     sql.add_collection("pmmessagecache", PMMESSAGE_CACHE, {})
-    USER_BOT_WARN_ZERO = "**If I Remember Correctly I Mentioned In My Previous Message That This Is Not The Right Place For You To Spam.\nThough You Ignored That Message.So, I Simply Blocked You.\nNow You Can't Do Anything Unless My Boss Comes Online And Unblocks You.**"
+    USER_BOT_WARN_ZERO = "**If I Remember Correctly I Mentioned In My Previous Message That This Is Not The Right Place For You To Spam.\nThough You Ignored That Message. So, I Simply Blocked You.\nNow You Can't Do Anything Unless My Boss Comes Online And Unblocks You.**"
 
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
@@ -313,7 +313,7 @@ __My Boss Will Respond When He/She Comes Online, If He/She Wants To.__
         LOGS.info(str(e))
     sql.del_collection("pmmessagecache")
     sql.add_collection("pmmessagecache", PMMESSAGE_CACHE, {})
-    USER_BOT_WARN_ZERO = "**If I Remember Correctly I Mentioned In My Previous Message That This Is Not The Right Place For You To Spam.\nThough You Ignored That Message.So, I Simply Blocked You.\nNow You Can't Do Anything Unless My Boss Comes Online And Unblocks You.**"
+    USER_BOT_WARN_ZERO = "**If I Remember Correctly I Mentioned In My Previous Message That This Is Not The Right Place For You To Spam.\nThough You Ignored That Message. So, I Simply Blocked You.\nNow You Can't Do Anything Unless My Boss Comes Online And Unblocks You.**"
 
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
@@ -362,7 +362,7 @@ __My Boss Will Respond When He/She Comes Back Online, If He/She Wants To.__
         LOGS.info(str(e))
     sql.del_collection("pmmessagecache")
     sql.add_collection("pmmessagecache", PMMESSAGE_CACHE, {})
-    USER_BOT_WARN_ZERO = "**If I Remember Correctly I Mentioned In My Previous Message That This Is Not The Right Place For You To Spam.\nThough You Ignored That Message.So, I Simply Blocked You.\nNow You Can't Do Anything Unless My Boss Comes Online And Unblocks You.**"
+    USER_BOT_WARN_ZERO = "**If I Remember Correctly I Mentioned In My Previous Message That This Is Not The Right Place For You To Spam.\nThough You Ignored That Message. So, I Simply Blocked You.\nNow You Can't Do Anything Unless My Boss Comes Online And Unblocks You.**"
 
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
@@ -390,7 +390,7 @@ async def do_pm_spam_action(event, chat):
             del PMMESSAGE_CACHE[str(chat.id)]
     except Exception as e:
         LOGS.info(str(e))
-    USER_BOT_WARN_ZERO = "**If I Remember Correctly I Mentioned In My Previous Message That This Is Not The Right Place For You To Spam.\nThough You Ignored That Message.So, I Simply Blocked You.\nNow You Can't Do Anything Unless My Boss Comes Online And Unblocks You.**"
+    USER_BOT_WARN_ZERO = "**If I Remember Correctly I Mentioned In My Previous Message That This Is Not The Right Place For You To Spam.\nThough You Ignored That Message. So, I Simply Blocked You.\nNow You Can't Do Anything Unless My Boss Comes Online And Unblocks You.**"
 
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
