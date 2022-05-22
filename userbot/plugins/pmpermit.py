@@ -129,7 +129,7 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
     elif gvarstatus("pmmenu") is None:
         USER_BOT_NO_WARN = f"""__HaHa..!__ 😂 
 
-{mention}  || __See... How Cute You Are Trying To PM My Boss, Anyway He/She May Answer And May Not Too...
+__See... How Cute You Are Trying To PM My Boss, Anyway He/She May Answer And May Not Too...
 You Can Expect A Reply Within 24 Light Years. He/She Is A Busy Man, Unlike You Probably.
 
 You Have {warns}/{totalwarns} Warns & If You Spam..!__
