@@ -720,9 +720,9 @@ async def pussycat(args):
             "/newvideo",
             args,
             1,
-            "Bot",
+            "LΣGΣΠD",
             True,
-            "😂",
+            "🌚",
             packname,
             False,
             io.BytesIO(),
@@ -734,7 +734,7 @@ async def pussycat(args):
         args.chat_id,
         sticker,
         force_document=True,
-        caption=f"**[Sticker Preview](t.me/addstickers/{packname})**\n*__It will remove automatically on your next convert.__",
+        caption=f"**[Sticker Preview](t.me/addstickers/{packname})**\n__It will remove automatically on your next convert.__",
         reply_to=message,
     )
     if os.path.exists(sticker):
