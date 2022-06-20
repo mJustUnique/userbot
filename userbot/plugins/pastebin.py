@@ -165,9 +165,9 @@ async def paste_bin(event):
         result = ""
         if pastebins[response["bin"]] != pastetype:
             result += f"<b>{get_key(pastetype)} is down, So </b>"
-        result += f"<b>Pasted to: <a href={response['url']}>{response['bin']}</a></b>"
+        result += f"<b>Pasted to : <a href={response['url']}>{response['bin']}</a></b>"
         if response["raw"] != "":
-            result += f"\n<b>Raw link: <a href={response['raw']}>Raw</a></b>"
+            result += f"\n<b>Raw link : <a href={response['raw']}>Raw</a></b>"
         await catevent.edit(result, link_preview=False, parse_mode="html")
     except Exception as e:
         await edit_delete(catevent, f"**Error while pasting text:**\n`{e}`")
@@ -246,7 +246,7 @@ async def get_dogbin_content(event):
                 f"**Request exceeded the configured number of maximum redirections.**__{str(RedirectsErr)}__"
             )
         )
-    reply_text = f"**Fetched dogbin URL content successfully!**\n\n**Content:** \n```{resp.text}```"
+    reply_text = f"**Fetched dogbin URL content successfully!**\n\n**Content :** \n```{resp.text}```"
     await edit_or_reply(catevent, reply_text)
 
 
@@ -306,7 +306,7 @@ async def _(event):
             await event.client.send_read_acknowledge(conv.chat_id)
             urls = extractor.find_urls(response.text)
             if urls:
-                result = f"The instant preview is [here]({urls[0]})"
+                result = f"The instant preview is [Here]({urls[0]})"
         if result == "":
             result = "I can't make it as instant view"
         await catevent.edit(result, link_preview=True)
