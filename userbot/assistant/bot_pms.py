@@ -104,8 +104,8 @@ async def bot_start(event):
                 my_mention=my_mention,
             )
         else:
-            start_msg = f"Hey..! 👤{mention},\
-                        \n\nI Am LΣGΣΠD's Assistant.\
+            start_msg = f"Hello !! {mention},\
+                        \n\nI Am LEGEND's Assistant.\
                         \n• I Can Delever Your Massages To My Boss.\
                         \n• Just Leave Your Massages & Wait For Reply.\
                         \n• Don't Try To Spam, Else You'll Be Blocked Instantly.\
