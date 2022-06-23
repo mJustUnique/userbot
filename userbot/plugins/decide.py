@@ -1,6 +1,4 @@
-# By - LΣGΣΠD | @Hey_LEGEND
-# From Kangers Import Madafaka
-# Keep Credits Madafaka !!
+
 
 import asyncio
 import random
