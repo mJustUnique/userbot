@@ -720,7 +720,7 @@ async def pussycat(args):
             "/newvideo",
             args,
             1,
-            "LΣGΣΠD",
+            "LEGEND",
             True,
             "🌚",
             packname,
