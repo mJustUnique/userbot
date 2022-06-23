@@ -111,11 +111,7 @@ async def bot_start(event):
                         \n• Don't Try To Spam, Else You'll Be Blocked Instantly.\
                         \n• I've Notified My Boss That You've Started Me!\
                         \n\nNow Tell Me Why You Came Here?"
-        buttons = [
-               (
-                       Button.url("About My Boss 🌚", "t.me/Hey_LEGEND"),
-                )
-                          ]
+        buttons = None
     else:
         start_msg = "Hi Boss !!\
             \nHow Can I Help You ?"
