@@ -237,6 +237,7 @@ async def _(event):  # sourcery no-metrics
             + PLG_INFO["transfer_channel"]
             + ["gauth"]
             + ["greset"]
+            + ["join_leave"]
         )
         loadcmds = list(set(totalcmds) - set(flagcmds))
         if len(sudocmds) > 0:
